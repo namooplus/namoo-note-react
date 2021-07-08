@@ -1,11 +1,16 @@
 import React from "react";
-import { BaseLayout } from "./style";
+import { BaseLayout, HeaderLayout, ContentLayout } from "./style";
 
 function BlogPage(props)
 {
     return (
         <BaseLayout>
-            BlogPage
+            <HeaderLayout>
+                나무의 노트
+            </HeaderLayout>
+            <ContentLayout>
+
+            </ContentLayout>
         </BaseLayout>
     );
 }
