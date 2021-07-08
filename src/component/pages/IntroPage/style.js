@@ -4,11 +4,8 @@ export const BaseLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
     background-color: #ebfffb;
-    align-items: center;
 `
-
-// 커버
-export const CoverLayout = styled.div`
+export const FrameLayout = styled.div`
     position: relative;
     display: flex;
     height: 100vh;
@@ -18,13 +15,14 @@ export const CoverLayout = styled.div`
     align-items: center;
     overflow: hidden;
 `
+
+// 첫번째 프레임
 export const Title = styled.h1`
-    margin: 0;
     font-size: 3rem;
     font-weight: 900;
     letter-spacing: 1rem;
 `
-export const PencilLayout = styled.div.attrs(props => ({
+export const CoverLayout = styled.div.attrs(props => ({
     style: {
         width: props.width
     }
@@ -35,9 +33,9 @@ export const PencilLayout = styled.div.attrs(props => ({
     height: 100vh;
     flex-flow: row-reverse nowrap;
     justify-content: flex-start;
-    align-items: flex-start;
+    align-items: center;
     background-color: #ebfffb;
-    transform: rotate(45deg);
+    transform: rotate(10deg);
 `
 export const Pencil = styled.div`
     height: 350px;
@@ -45,18 +43,33 @@ export const Pencil = styled.div`
     background-color: black;
 `
 
-
-// 내용
-export const ContentLayout = styled.div`
+// 두번째 프레임
+export const PaperLayout = styled.div.attrs(props => ({
+    style: {
+        boxShadow: `0 0 ${props.shadowRadius} lightgray`,
+        transform: `translate(${props.translate}) rotate(${props.rotate})`
+    }
+}))`
+    position: absolute;
     display: flex;
-    width: 600px;
-    height: 80vh;
     flex-flow: column nowrap;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
+    height: 80vh;
+    width: 400px;
+    box-sizing: border-box;
+    padding: 20px;
+    background-color: white;
+`
+export const Image = styled.div`
+    width: 60px;
+    height: 60px;
+    background-color: gray;
 `
 export const Paragraph = styled.p`
-    font-size: 1rem;
+    margin: 30px 0;
+    line-height: 1.4rem;
+    font-size: 0.9rem;
     color: black;
 `
 export const ButtonLayout = styled.div`

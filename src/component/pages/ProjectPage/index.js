@@ -1,7 +1,7 @@
 import React from "react";
 import { BaseLayout, HeaderLayout, ContentLayout } from "./style";
 
-function PortfolioPage(props)
+function ProjectPage(props)
 {
     return (
         <BaseLayout>
@@ -15,4 +15,4 @@ function PortfolioPage(props)
     );
 }
 
-export default PortfolioPage;
+export default ProjectPage;

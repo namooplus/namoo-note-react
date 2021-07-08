@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import IntroPage from "./component/pages/IntroPage/index";
 import BlogPage from "./component/pages/BlogPage/index";
-import PortfolioPage from "./component/pages/PortfolioPage/index";
+import ProjectPage from "./component/pages/ProjectPage/index";
 import PostPage from "./component/pages/PostPage/index";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
         <Route exact path="/" component={IntroPage}/>
 
         <Route exact path="/blog" component={BlogPage}/>
-        <Route exact path="/portfolio" component={PortfolioPage}/>
+        <Route exact path="/project" component={ProjectPage}/>
 
         <Route exact path="/post/:id" component={PostPage}/>
 
