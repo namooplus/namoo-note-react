@@ -78,13 +78,21 @@ export const ButtonLayout = styled.div`
     gap: 10px;
 `
 
-// 가이드
-export const GuideLabel = styled.span.attrs(props => ({
+// 오버레이
+export const OverlayLayout = styled.div.attrs(props => ({
     style: {
         opacity: props.opacity
     }
 }))`
     position: fixed;
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+    flex-flow: column nowrap;
+    pointer-events: none;
+`
+export const GuideLabel = styled.span`
+    position: absolute;
     width: 100%;
     bottom: 0;
     margin-bottom: 30px;

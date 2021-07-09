@@ -3,7 +3,7 @@ import {
     BaseLayout, FrameLayout, 
     Title, CoverLayout, Pencil,
     PaperLayout, Image, Paragraph, ButtonLayout,
-    GuideLabel 
+    OverlayLayout, GuideLabel
 } from "./style";
 import SimpleButton from "../../common/SimpleButton";
 
@@ -19,12 +19,14 @@ function IntroPage(props)
 
     return (
         <BaseLayout>
+            {/* 첫번째 프레임 */}
             <FrameLayout>
                 <Title>나무의 노트</Title>
                 <CoverLayout width={20 + scrollDegree * 60 + '%'}>
                     <Pencil/>
                 </CoverLayout>
             </FrameLayout>
+            {/* 두번째 프레임 */}
             <FrameLayout>
                 <PaperLayout
                     rotate={-8 * scrollDegree + 'deg'}
@@ -53,7 +55,10 @@ function IntroPage(props)
                     </ButtonLayout>
                 </PaperLayout>
             </FrameLayout>
-            <GuideLabel opacity={1 - scrollDegree}>⌵</GuideLabel>
+            {/* 오버레이 */}
+            <OverlayLayout opacity={1 - scrollDegree}>
+                <GuideLabel>⌵</GuideLabel>
+            </OverlayLayout>
         </BaseLayout>
     );
 }
