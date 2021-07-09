@@ -16,11 +16,14 @@ function PostPage(props)
 
     const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
 
+    const updateHeaderScrollDegree = () => {
+        const scrollDegree = window.scrollY / window.innerHeight;
+        setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
+    };
+
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            const scrollDegree = window.scrollY / window.innerHeight;
-            setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
-        })
+        window.addEventListener('scroll', updateHeaderScrollDegree);
+        return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
     }, []);
 
     function scrollTop()

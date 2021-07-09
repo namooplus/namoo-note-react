@@ -15,10 +15,11 @@ function IntroPage(props)
 {
     const [scrollDegree, setScrollDegree] = useState(0);
 
+    const updateScrollDegree = () => setScrollDegree(window.scrollY / (document.body.offsetHeight - window.innerHeight));
+
     useEffect(() => {
-        window.addEventListener('scroll', () => {
-            setScrollDegree(window.scrollY / (document.body.offsetHeight - window.innerHeight));
-        });
+        window.addEventListener('scroll', updateScrollDegree);
+        return () => window.removeEventListener('scroll', updateScrollDegree);
     }, []);
 
     return (
