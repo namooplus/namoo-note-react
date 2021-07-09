@@ -21,8 +21,9 @@ export const HeaderLayout = styled.div.attrs(props => ({
     display: flex;
     flex-flow: column nowrap;
     gap: 5px;
-    padding: 50px 50px 100px 50px;
-    margin-top: calc(100vh - (3.3rem + 155px));
+    padding: 140px 50px 100px 50px;
+    margin-top: calc(100vh - (3.8rem + 245px));
+    pointer-events: none;
 `
 export const Title = styled.h1`
     margin: 0;
@@ -91,28 +92,12 @@ export const MenuLayout = styled.div.attrs(props => ({
     }
 }))`
     position: fixed;
-    bottom: 0;
-    right: 0;
+    top: ${props => props.top || "unset"};
+    bottom: ${props => props.bottom || "unset"};
+    right: ${props => props.right || "unset"};
+    left: ${props => props.left || "unset"};
     display: flex;
     flex-flow: row nowrap;
     margin: 40px;
     gap: 20px;
-`
-export const CommentLayout = styled.div`
-    position: fixed;
-    top: 50vh;
-    display: flex;
-    width: 100%;
-    height: 50vh;
-    flex-flow: row nowrap;
-    padding: 40px;
-    gap: 20px;
-    background-color: white;
-    box-shadow: 0 0 20px lightgray;
-`
-export const Subtitle = styled.h2`
-    margin: 0;
-    color: black;
-    font-size: 2rem;
-    font-weight: 500;
 `

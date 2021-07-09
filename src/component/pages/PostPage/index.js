@@ -5,10 +5,10 @@ import {
     HeaderLayout, Title, Description, 
     ContentLayout, Post,
     OverlayLayout, GuideLabel, Decoration,
-    MenuLayout, CommentLayout
+    MenuLayout
 } from "./style";
 import FloatingButton from "../../common/FloatingButton";
-import { IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
+import { IoCloseOutline, IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 function PostPage(props)
 {
@@ -86,15 +86,14 @@ function PostPage(props)
                 <Decoration bottom="-8rem" right="10rem">무</Decoration>
             </OverlayLayout>
             {/* 플로팅 메뉴 */}
-            <MenuLayout opacity={headerScrollDegree}>
+            <MenuLayout top="0" left="0">
+                <FloatingButton route="/blog"><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
+            </MenuLayout>
+            <MenuLayout opacity={headerScrollDegree} bottom="0" right="0">
                 <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>
                 <FloatingButton><IoChatboxOutline fontSize="1.4rem"/></FloatingButton>
                 <FloatingButton onClick={scrollTop}><IoArrowUpOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
-            {/* 플로팅 댓글 */}
-            {/* <CommentLayout>
-
-            </CommentLayout> */}
         </BaseLayout>
     );
 }
