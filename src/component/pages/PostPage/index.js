@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router";
 import { 
     BaseLayout,
     HeaderLayout, Title, Description, 
@@ -7,7 +8,7 @@ import {
     FloatingLayout
 } from "./style";
 import FloatingButton from "../../common/FloatingButton";
-import { useParams } from "react-router";
+import { IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 function PostPage(props)
 {
@@ -21,6 +22,11 @@ function PostPage(props)
             setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
         })
     }, []);
+
+    function scrollTop()
+    {
+        window.scrollTo({ top: 0, behavior: 'smooth'});
+    }
 
     return (
         <BaseLayout whiteDegree={headerScrollDegree}>
@@ -78,9 +84,9 @@ function PostPage(props)
             </OverlayLayout>
             {/* 플로팅 메뉴 */}
             <FloatingLayout opacity={headerScrollDegree}>
-                <FloatingButton></FloatingButton>
-                <FloatingButton></FloatingButton>
-                <FloatingButton></FloatingButton>
+                <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton><IoChatboxOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton onClick={scrollTop}><IoArrowUpOutline fontSize="1.4rem"/></FloatingButton>
             </FloatingLayout>
         </BaseLayout>
     );

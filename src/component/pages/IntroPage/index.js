@@ -6,6 +6,7 @@ import {
     OverlayLayout, GuideLabel
 } from "./style";
 import SimpleButton from "../../common/SimpleButton";
+import PencilIcon from "../../../image/pencil.PNG";
 import namooIcon from "../../../image/namoo.png";
 
 function IntroPage(props)
@@ -24,7 +25,7 @@ function IntroPage(props)
             <FrameLayout>
                 <Title>나무의 노트</Title>
                 <CoverLayout width={20 + scrollDegree * 60 + '%'}>
-                    <Pencil/>
+                    <Pencil src={PencilIcon}/>
                 </CoverLayout>
             </FrameLayout>
             {/* 두번째 프레임 */}

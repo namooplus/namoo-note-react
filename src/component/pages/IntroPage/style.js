@@ -37,10 +37,9 @@ export const CoverLayout = styled.div.attrs(props => ({
     background-color: #ebfffb;
     transform: rotate(10deg);
 `
-export const Pencil = styled.div`
-    height: 350px;
+export const Pencil = styled.img`
+    height: 400px;
     width: 20px;
-    background-color: black;
 `
 
 // 두번째 프레임

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 function FloatingButton(props)
 {
-    return <Button>{props.children}</Button>;
+    return <Button onClick={props.onClick}>{props.children}</Button>;
 }
 
 export default FloatingButton;
@@ -15,6 +15,7 @@ const Button = styled.button`
     background-color: white;
     box-shadow: 0 0 20px lightgray;
     color: black;
+    padding: calc(25px - 0.7rem);
     transition: background-color 200ms, box-shadow 200ms;
 
     &:hover {
