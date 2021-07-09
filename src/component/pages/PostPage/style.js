@@ -85,7 +85,7 @@ export const Decoration = styled.span`
 `
 
 // 플로팅
-export const FloatingLayout = styled.div.attrs(props => ({
+export const MenuLayout = styled.div.attrs(props => ({
     style: {
         opacity: props.opacity
     }
@@ -97,4 +97,22 @@ export const FloatingLayout = styled.div.attrs(props => ({
     flex-flow: row nowrap;
     margin: 40px;
     gap: 20px;
+`
+export const CommentLayout = styled.div`
+    position: fixed;
+    top: 50vh;
+    display: flex;
+    width: 100%;
+    height: 50vh;
+    flex-flow: row nowrap;
+    padding: 40px;
+    gap: 20px;
+    background-color: white;
+    box-shadow: 0 0 20px lightgray;
+`
+export const Subtitle = styled.h2`
+    margin: 0;
+    color: black;
+    font-size: 2rem;
+    font-weight: 500;
 `
