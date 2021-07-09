@@ -61,13 +61,12 @@ export const PaperLayout = styled.div.attrs(props => ({
     padding: 20px;
     background-color: white;
 `
-export const Image = styled.div`
-    width: 60px;
-    height: 60px;
-    background-color: gray;
+export const Image = styled.img`
+    width: 80px;
+    height: 80px;
 `
 export const Paragraph = styled.p`
-    margin: 30px 0;
+    margin: 10px 0 30px 0;
     line-height: 1.4rem;
     font-size: 0.9rem;
     color: black;

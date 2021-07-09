@@ -6,6 +6,7 @@ import {
     OverlayLayout, GuideLabel
 } from "./style";
 import SimpleButton from "../../common/SimpleButton";
+import namooIcon from "../../../image/namoo.png";
 
 function IntroPage(props)
 {
@@ -40,7 +41,7 @@ function IntroPage(props)
                     rotate="0"
                     translate="0"
                     shadowRadius={20 * scrollDegree + 'px'}>
-                    <Image/>
+                    <Image src={namooIcon} alt="나무 아이콘"/>
                     <Paragraph>
                         안녕하세요! 나무입니다.<br/>
                         현재 연세대학교 컴퓨터과학과에 재학중이며 훌륭한 개발자가 되기 위해 많이 배우고 있는 중입니다 :)<br/>
