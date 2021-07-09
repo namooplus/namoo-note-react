@@ -3,7 +3,7 @@ import {
     BaseLayout,
     HeaderLayout, Title, Description, 
     ContentLayout, Post,
-    OverlayLayout, GuideLabel, Decoration1, Decoration2,
+    OverlayLayout, GuideLabel, Decoration,
     FloatingLayout
 } from "./style";
 import FloatingButton from "../../common/FloatingButton";
@@ -73,9 +73,10 @@ function PostPage(props)
             {/* 오버레이 */}
             <OverlayLayout opacity={1 - headerScrollDegree}>
                 <GuideLabel>⌵</GuideLabel>
-                <Decoration1>나</Decoration1>
-                <Decoration2>무</Decoration2>
+                <Decoration top="-10rem" left="10rem">나</Decoration>
+                <Decoration bottom="-8rem" right="10rem">무</Decoration>
             </OverlayLayout>
+            {/* 플로팅 메뉴 */}
             <FloatingLayout opacity={headerScrollDegree}>
                 <FloatingButton></FloatingButton>
                 <FloatingButton></FloatingButton>

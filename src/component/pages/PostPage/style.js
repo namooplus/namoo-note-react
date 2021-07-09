@@ -60,6 +60,7 @@ export const OverlayLayout = styled.div.attrs(props => ({
     width: 100vw;
     flex-flow: column nowrap;
     pointer-events: none;
+    overflow: visible;
 `
 export const GuideLabel = styled.span`
     position: absolute;
@@ -70,20 +71,12 @@ export const GuideLabel = styled.span`
     text-align: center;
     color: black;
 `
-export const Decoration1 = styled.span`
+export const Decoration = styled.span`
     position: absolute;
-    top: -10rem;
-    left: 10rem;
-    color: gray;
-    font-size: 20rem;
-    font-weight: 800;
-    opacity: 0.2;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
-`
-export const Decoration2 = styled.span`
-    position: absolute;
-    bottom: -8rem;
-    right: 10rem;
+    top: ${props => props.top || 'unset'};
+    bottom: ${props => props.bottom || 'unset'};
+    left: ${props => props.left || 'unset'};
+    right: ${props => props.right || 'unset'};
     color: gray;
     font-size: 20rem;
     font-weight: 800;
