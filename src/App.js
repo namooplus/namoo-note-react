@@ -5,6 +5,7 @@ import IntroPage from "./component/pages/IntroPage/index";
 import BlogPage from "./component/pages/BlogPage/index";
 import ProjectPage from "./component/pages/ProjectPage/index";
 import PostPage from "./component/pages/PostPage/index";
+import ErrorPage from "./component/pages/ErrorPage/index";
 
 function App() {
   return (
@@ -17,7 +18,9 @@ function App() {
 
         <Route exact path="/post/:id" component={PostPage}/>
 
-        <Route component={() => <Redirect to="/"/>}/>
+        <Route exact path="/error" component={ErrorPage}/>
+
+        <Route component={() => <Redirect to="/error"/>}/>
       </Switch>
     </Router>
   );

@@ -1,18 +1,23 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function SimpleButton(props)
 {
-    return <Button>{props.children}</Button>;
+    return (
+        props.route 
+            ? (<Link to={props.route}><Button>{props.children}</Button></Link>) 
+            : (<Button onClick={props.onClick}>{props.children}</Button>)
+    );
 }
 
 export default SimpleButton;
 
 const Button = styled.button`
-    width: 130px;
-    height: 40px;
+    border: none;
+    padding: 7px 15px;
     background-color: black;
     color: white;
-    border: none;
+    font-size: 1rem;
     transition: background-color 200ms;
 
     &:hover {

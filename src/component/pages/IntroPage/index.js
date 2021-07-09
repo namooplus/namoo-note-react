@@ -50,8 +50,8 @@ function IntroPage(props)
                         정리 및 공유를 위한 블로그도 운영하고 있으니 한 번씩 구경해주세요 :)
                     </Paragraph>
                     <ButtonLayout>
-                        <SimpleButton>프로젝트</SimpleButton>
-                        <SimpleButton>블로그</SimpleButton>
+                        <SimpleButton route="/project">프로젝트</SimpleButton>
+                        <SimpleButton route="/blog">블로그</SimpleButton>
                     </ButtonLayout>
                 </PaperLayout>
             </FrameLayout>
