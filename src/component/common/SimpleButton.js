@@ -14,7 +14,7 @@ export default SimpleButton;
 
 const Button = styled.button`
     border: none;
-    padding: 7px 15px;
+    padding: 10px 15px;
     background-color: black;
     color: white;
     font-size: 1rem;

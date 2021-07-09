@@ -40,7 +40,7 @@ export const PaperLayout = styled.div.attrs(props => ({
     height: 90%;
     width: 90%;
     box-sizing: border-box;
-    padding: 40px;
+    padding: ${props => props.padding};
     background-color: white;
     box-shadow: 0 0 10px lightgray;
     overflow: scroll;
@@ -49,15 +49,4 @@ export const Subtitle = styled.h2`
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
-`
-
-// 메뉴
-export const MenuLayout = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 40px;
-    gap: 20px;
 `
