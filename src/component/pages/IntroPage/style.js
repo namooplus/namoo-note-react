@@ -52,8 +52,8 @@ export const PaperLayout = styled.div.attrs(props => ({
     position: absolute;
     display: flex;
     flex-flow: column nowrap;
-    justify-content: center;
-    align-items: center;
+    justify-content: ${props => props.align};
+    align-items: ${props => props.align};
     height: 80vh;
     width: 400px;
     box-sizing: border-box;

@@ -6,8 +6,10 @@ import {
     OverlayLayout, GuideLabel
 } from "./style";
 import SimpleButton from "../../common/SimpleButton";
+import TransparentButton from "../../common/TransparentButton";
 import PencilIcon from "../../../image/pencil.PNG";
 import namooIcon from "../../../image/namoo.png";
+import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 
 function IntroPage(props)
 {
@@ -31,14 +33,19 @@ function IntroPage(props)
             {/* 두번째 프레임 */}
             <FrameLayout>
                 <PaperLayout
+                    align="flex-start"
                     rotate={-8 * scrollDegree + 'deg'}
                     translate={-80 * scrollDegree + 'px'}
-                    shadowRadius={20 * scrollDegree + 'px'}/>
+                    shadowRadius={20 * scrollDegree + 'px'}>
+                    <TransparentButton onClick={() => window.open('https://www.instagram.com/min.i.stop/')}><IoLogoGithub fontSize="1.4rem"/></TransparentButton>
+                    <TransparentButton onClick={() => window.open('https://github.com/namooplus')}><IoLogoInstagram fontSize="1.4rem"/></TransparentButton>
+                </PaperLayout>
                 <PaperLayout
                     rotate={8 * scrollDegree + 'deg'}
                     translate={50 * scrollDegree + 'px'}
                     shadowRadius={20 * scrollDegree + 'px'}/>
                 <PaperLayout
+                    align="center"
                     rotate="0"
                     translate="0"
                     shadowRadius={20 * scrollDegree + 'px'}>
