@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const BaseLayout = styled.div`
     display: flex;
@@ -29,11 +29,7 @@ export const ContentLayout = styled.div`
     justify-content: center;
     align-items: center;
 `
-export const PaperLayout = styled.div.attrs(props => ({
-    style: {
-        transform: `translate(${props.translate}) rotate(${props.rotate})`
-    }
-}))`
+export const PaperLayout = styled.div`
     position: absolute;
     display: flex;
     flex-flow: column nowrap;
@@ -44,9 +40,23 @@ export const PaperLayout = styled.div.attrs(props => ({
     background-color: white;
     box-shadow: 0 0 10px lightgray;
     overflow: scroll;
+
+    ${props => props.animate && css`
+        animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
+    `}
 `
 export const Subtitle = styled.h2`
     margin: 0;
     font-size: 1rem;
     font-weight: 500;
+`
+
+// 애니메이션
+const paperRevealAnimation = keyframes`
+    0% {
+        transform: translate(0) rotate(0);
+    }
+    100% {
+        transform: translate(-50px) rotate(-3deg);
+    }
 `

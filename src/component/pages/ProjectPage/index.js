@@ -15,7 +15,7 @@ function ProjectPage(props)
                 <Title>나무의 노트</Title>
             </HeaderLayout>
             <ContentLayout>
-                <PaperLayout translate="-50px" rotate="-3deg" padding="10px">
+                <PaperLayout padding="10px" animate>
                     <TransparentButton route="/"><IoChevronBackOutline fontSize="1.4rem"/></TransparentButton>
                 </PaperLayout>
                 <PaperLayout padding="40px">
