@@ -14,7 +14,8 @@ export const HeaderLayout = styled.div`
     justify-content: center;
     align-items: center;
 `
-export const Title = styled.h1`
+export const Title = styled.h1` 
+    margin: 0;
     font-size: 2.3rem;
     font-weight: 900;
     letter-spacing: 0.8rem;
@@ -39,25 +40,33 @@ export const PaperLayout = styled.div`
     padding: ${props => props.padding};
     background-color: white;
     box-shadow: 0 0 10px lightgray;
-    overflow: scroll;
+    /* overflow: scroll; */
 
     ${props => props.animate && css`
         animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
     `}
 `
-export const Subtitle = styled.span`
-    align-self: flex-start;
-    margin: 0;
-    background-color: black;
-    font-size: 1rem;
-    font-weight: 500;
-    color: white;
+export const CategoryLayout = styled.div`
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    padding: 40px;
+    gap: 20px;
+    background: linear-gradient(to bottom, white 0%, white 60%, transparent 100%);
+`
+export const Category = styled.a`
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: ${props => props.selected ? 'black' : 'lightgray'};
 `
 export const ListLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
-    margin: 30px 0 40px 0;
+    padding: calc(1.5rem + 80px) 40px 40px 40px;
     gap: 20px;
+    overflow: scroll;
 `
 
 // 애니메이션

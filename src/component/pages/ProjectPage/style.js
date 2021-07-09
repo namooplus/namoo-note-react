@@ -45,10 +45,27 @@ export const PaperLayout = styled.div`
         animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
     `}
 `
-export const Subtitle = styled.h2`
-    margin: 0;
-    font-size: 1rem;
-    font-weight: 500;
+export const CategoryLayout = styled.div`
+    position: absolute;
+    display: flex;
+    width: 100%;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    padding: 40px;
+    gap: 20px;
+    background: linear-gradient(to bottom, white 0%, white 60%, transparent 100%);
+`
+export const Category = styled.a`
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: ${props => props.selected ? 'black' : 'lightgray'};
+`
+export const ListLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    padding: calc(1.5rem + 80px) 40px 40px 40px;
+    gap: 20px;
+    overflow: scroll;
 `
 
 // 애니메이션

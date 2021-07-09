@@ -2,7 +2,7 @@ import React from "react";
 import { 
     BaseLayout, 
     HeaderLayout, Title,
-    ContentLayout, PaperLayout, Subtitle
+    ContentLayout, PaperLayout, CategoryLayout, Category, ListLayout
 } from "./style";
 import TransparentButton from "../../common/TransparentButton";
 import { IoChevronBackOutline } from "react-icons/io5";
@@ -18,8 +18,15 @@ function ProjectPage(props)
                 <PaperLayout padding="10px" animate>
                     <TransparentButton route="/"><IoChevronBackOutline fontSize="1.4rem"/></TransparentButton>
                 </PaperLayout>
-                <PaperLayout padding="40px">
-                    <Subtitle>앱</Subtitle>
+                <PaperLayout padding="0">
+                    <CategoryLayout>
+                        <Category selected>앱</Category>
+                        <Category>웹</Category>
+                        <Category>드로잉</Category>
+                    </CategoryLayout>
+                    <ListLayout>
+
+                    </ListLayout>
                 </PaperLayout>
             </ContentLayout>
         </BaseLayout>
