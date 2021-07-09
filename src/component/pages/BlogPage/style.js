@@ -45,10 +45,19 @@ export const PaperLayout = styled.div`
         animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
     `}
 `
-export const Subtitle = styled.h2`
+export const Subtitle = styled.span`
+    align-self: flex-start;
     margin: 0;
+    background-color: black;
     font-size: 1rem;
     font-weight: 500;
+    color: white;
+`
+export const ListLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 30px 0 40px 0;
+    gap: 20px;
 `
 
 // 애니메이션

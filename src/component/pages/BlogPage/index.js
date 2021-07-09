@@ -2,9 +2,10 @@ import React from "react";
 import { 
     BaseLayout, 
     HeaderLayout, Title,
-    ContentLayout, PaperLayout, Subtitle
+    ContentLayout, PaperLayout, Subtitle, ListLayout
 } from "./style";
 import TransparentButton from "../../common/TransparentButton";
+import PostCard from "../../common/PostCard";
 import { IoChevronBackOutline } from "react-icons/io5";
 
 function BlogPage(props)
@@ -19,7 +20,12 @@ function BlogPage(props)
                     <TransparentButton route="/"><IoChevronBackOutline fontSize="1.4rem"/></TransparentButton>
                 </PaperLayout>
                 <PaperLayout padding="40px">
-                    <Subtitle>추천 게시물</Subtitle>
+                    <Subtitle>앗 이건 꼭 봐야돼!</Subtitle>
+                    <ListLayout>
+                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/1"/>
+                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/2"/>
+                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/3"/>
+                    </ListLayout>
                 </PaperLayout>
             </ContentLayout>
         </BaseLayout>
