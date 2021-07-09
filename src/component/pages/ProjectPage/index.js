@@ -20,8 +20,8 @@ function ProjectPage(props)
                 </PaperLayout>
                 <PaperLayout padding="0">
                     <CategoryLayout>
-                        <Category selected>앱</Category>
-                        <Category>웹</Category>
+                        <Category selected>안드로이드</Category>
+                        <Category>리액트</Category>
                         <Category>드로잉</Category>
                     </CategoryLayout>
                     <ListLayout>
