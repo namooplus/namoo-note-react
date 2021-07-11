@@ -1,14 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import TempThumbnail from "../../image/thumbnail.png";
 
 function ProjectCard(props)
 {
     return (
-        <Link style={{textDecoration: "none"}} to={props.route}>
+        <Link style={{textDecoration: "none"}} to={props.link}>
             <CardLayout>
-                <Thumbnail src={TempThumbnail}/>
+                <Thumbnail src={props.thumbnail}/>
                 <DescriptionLayout>
                     <Title>{props.title}</Title>
                     <TagLayout>

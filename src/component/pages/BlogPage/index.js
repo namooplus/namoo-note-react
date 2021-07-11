@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import PostList from "../../../post/PostList";
 
 import { 
@@ -14,6 +14,25 @@ import { IoChevronBackOutline } from "react-icons/io5";
 
 function BlogPage(props)
 {
+    const [selectedCategory, setSelectedCategory] = useState('');
+    const [filteredPosts, setFilteredPosts] = useState([]);
+
+    const filterCategory = (category) => {
+        // 카테고리 변경
+        if (category) setSelectedCategory(category);
+        else setSelectedCategory('');
+
+        // 포스트 리스트 업데이트
+        const filteredList = category 
+            ? PostList.filter(post => post.id.split('~')[1] === category) 
+            : PostList.filter(post => post.recommend === true);
+        setFilteredPosts(filteredList);
+    };
+
+    useEffect(() => {
+        filterCategory();
+    }, []);
+
     return (
         <BaseLayout>
             <HeaderLayout>
@@ -25,18 +44,26 @@ function BlogPage(props)
                 </PaperLayout>
                 <PaperLayout padding="0">
                     <CategoryLayout>
-                        <Category selected>추천</Category>
-                        <Category>카테고리 1</Category>
-                        <Category>카테고리 2</Category>
-                        <Category>카테고리 3</Category>
+                        <Category
+                            selected={ selectedCategory === '' ? true : false }
+                            onClick={() => { filterCategory() }}>추천</Category>
+                        <Category
+                            selected={ selectedCategory === 'info' ? true : false }
+                            onClick={() => { filterCategory('info') }}>정보 노트</Category>
+                        <Category
+                            selected={ selectedCategory === 'code' ? true : false }
+                            onClick={() => { filterCategory('code') }}>코딩 노트</Category>
+                        <Category
+                            selected={ selectedCategory === 'namoo' ? true : false }
+                            onClick={() => { filterCategory('namoo') }}>나무 노트</Category>
                     </CategoryLayout>
                     <ListLayout>
-                        {PostList.map((post, index) => 
+                        {filteredPosts.map((post, index) => 
                             <PostCard 
                                 key={index}
                                 title={post.title}
                                 thumbnail={require(`../../../post/${post.id}/thumbnail.png`).default}
-                                date={post.id.substring(0, 10)}
+                                date={post.id.split('~')[0]}
                                 tags={post.tag}
                                 link={`/post/${post.id}`}/>
                         )}

@@ -55,10 +55,19 @@ export const CategoryLayout = styled.div`
     gap: 20px;
     background: linear-gradient(to bottom, white 0%, white 60%, transparent 100%);
 `
-export const Category = styled.a`
+export const Category = styled.button`
+    padding: 0;
+    border: none;
+    background: none;
     font-size: 1.5rem;
     font-weight: 800;
-    color: ${props => props.selected ? 'black' : 'lightgray'};
+    color: black;
+    opacity: ${props => props.selected ? 1 : 0.2};
+    transition: opacity 500ms;
+
+    &:hover {
+        opacity: 1;
+    }
 `
 export const ListLayout = styled.div`
     display: flex;

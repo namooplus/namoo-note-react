@@ -1,16 +1,14 @@
 [
     {
-        "id": "2021-07-11-test-post",
+        "id": "2021-07-11~info~test-post",
         "title": "테스트 포스트",
-        "category": "카테고리1",
         "tag": ["Tag1", "Tag2"],
         "recommend": true
     },
     {
-        "id": "2021-07-12-test-post-2",
+        "id": "2021-07-12~info~test-post-2",
         "title": "테스트 포스트 2",
-        "category": "카테고리1",
         "tag": ["Tag1", "Tag2", "Tag3"],
-        "recommend": true
+        "recommend": false
     }
 ]
