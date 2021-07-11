@@ -1,4 +1,5 @@
 import React from "react";
+
 import { BaseLayout, Warning } from "./style";
 import SimpleButton from "../../common/SimpleButton";
 import { IoWarningOutline } from "react-icons/io5";
