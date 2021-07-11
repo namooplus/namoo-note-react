@@ -38,8 +38,8 @@ function IntroPage(props)
                     rotate={-8 * scrollDegree + 'deg'}
                     translate={-80 * scrollDegree + 'px'}
                     shadowRadius={20 * scrollDegree + 'px'}>
-                    <TransparentButton onClick={() => window.open('https://www.instagram.com/min.i.stop/')}><IoLogoGithub fontSize="1.4rem"/></TransparentButton>
-                    <TransparentButton onClick={() => window.open('https://github.com/namooplus')}><IoLogoInstagram fontSize="1.4rem"/></TransparentButton>
+                    <TransparentButton onClick={() => window.open('https://github.com/namooplus')}><IoLogoGithub fontSize="1.4rem"/></TransparentButton>
+                    <TransparentButton onClick={() => window.open('https://www.instagram.com/min.i.stop/')}><IoLogoInstagram fontSize="1.4rem"/></TransparentButton>
                 </PaperLayout>
                 <PaperLayout
                     rotate={8 * scrollDegree + 'deg'}
