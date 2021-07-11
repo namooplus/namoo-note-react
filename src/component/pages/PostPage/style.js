@@ -1,103 +1,88 @@
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
-export const BaseLayout = styled.div.attrs(props => ({
-    style: {
-        backgroundColor: `rgba(255, 255, 255, ${props.whiteDegree})`
-    }
-}))`
+export const BaseLayout = styled.div`
     display: flex;
-    flex-flow: column nowrap;
+    height: 100vh;
+    flex-flow: row nowrap;
 `
 
 // 헤더
-export const HeaderLayout = styled.div.attrs(props => ({
-    style: {
-        opacity: props.opacity
-    }
-}))`
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+export const HeaderLayout = styled.div`
     display: flex;
+    width: 30%;
     flex-flow: column nowrap;
-    gap: 5px;
-    padding: 140px 50px 100px 50px;
-    margin-top: calc(100vh - (3.8rem + 245px));
-    pointer-events: none;
-`
-export const Title = styled.h1`
-    margin: 0;
-    color: black;
-    font-size: 2.5rem;
-`
-export const Description = styled.h2`
-    margin: 0;
-    color: gray;
-    font-size: 1.3rem;
-    font-weight: 300;
-`
-
-// 포스트
-export const ContentLayout = styled.div`
-    display: flex;
-    flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
-    padding: 50px;
 `
-export const Post = styled.p`
-    width: 600px;
+export const Title = styled.h1` 
     margin: 0;
+    font-size: 2.3rem;
+    font-weight: 900;
+    letter-spacing: 0.8rem;
 `
 
-// 오버레이
-export const OverlayLayout = styled.div.attrs(props => ({
-    style: {
-        opacity: props.opacity
-    }
-}))`
-    position: fixed;
+// 내용
+export const ContentLayout = styled.div`
+    position: relative;
     display: flex;
-    height: 100vh;
-    width: 100vw;
+    flex: 1 0 0;
     flex-flow: column nowrap;
-    pointer-events: none;
-    overflow: visible;
+    justify-content: center;
+    align-items: center;
 `
-export const GuideLabel = styled.span`
+export const PaperLayout = styled.div`
     position: absolute;
+    display: flex;
+    flex-flow: column nowrap;
+    height: 90%;
+    width: 90%;
+    box-sizing: border-box;
+    padding: ${props => props.padding};
+    background-color: white;
+    box-shadow: 0 0 10px lightgray;
+
+    ${props => props.animate && css`
+        animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
+    `}
+`
+export const CategoryLayout = styled.div`
+    position: absolute;
+    display: flex;
     width: 100%;
-    bottom: 0;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
-    text-align: center;
-    color: black;
+    flex-flow: row wrap;
+    box-sizing: border-box;
+    padding: 40px;
+    gap: 20px;
+    background: linear-gradient(to bottom, white 0%, white 60%, transparent 100%);
 `
-export const Decoration = styled.span`
-    position: absolute;
-    top: ${props => props.top || 'unset'};
-    bottom: ${props => props.bottom || 'unset'};
-    left: ${props => props.left || 'unset'};
-    right: ${props => props.right || 'unset'};
-    color: gray;
-    font-size: 20rem;
+export const Category = styled.button`
+    padding: 0;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
     font-weight: 800;
-    opacity: 0.2;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: black;
+    opacity: ${props => props.selected ? 1 : 0.2};
+    transition: opacity 500ms;
+
+    &:hover {
+        opacity: 1;
+    }
+`
+export const ListLayout = styled.div`
+    display: flex;
+    flex-flow: column nowrap;
+    padding: calc(1.5rem + 80px) 40px 40px 40px;
+    gap: 20px;
+    overflow: scroll;
 `
 
-// 플로팅
-export const MenuLayout = styled.div.attrs(props => ({
-    style: {
-        opacity: props.opacity
+// 애니메이션
+const paperRevealAnimation = keyframes`
+    0% {
+        transform: translate(0) rotate(0);
     }
-}))`
-    position: fixed;
-    top: ${props => props.top || "unset"};
-    bottom: ${props => props.bottom || "unset"};
-    right: ${props => props.right || "unset"};
-    left: ${props => props.left || "unset"};
-    display: flex;
-    flex-flow: row nowrap;
-    margin: 40px;
-    gap: 20px;
+    100% {
+        transform: translate(-50px) rotate(-3deg);
+    }
 `

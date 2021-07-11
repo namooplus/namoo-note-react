@@ -62,7 +62,7 @@ function IntroPage(props)
                     </Paragraph>
                     <ButtonLayout>
                         <SimpleButton route="/project">프로젝트</SimpleButton>
-                        <SimpleButton route="/blog">블로그</SimpleButton>
+                        <SimpleButton route="/post">블로그</SimpleButton>
                     </ButtonLayout>
                 </PaperLayout>
             </FrameLayout>
