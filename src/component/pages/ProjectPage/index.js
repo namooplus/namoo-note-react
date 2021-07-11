@@ -2,9 +2,12 @@ import React from "react";
 import { 
     BaseLayout, 
     HeaderLayout, Title,
-    ContentLayout, PaperLayout, CategoryLayout, Category, ListLayout
+    ContentLayout, PaperLayout,
+    CategoryLayout, Category,
+    ListLayout
 } from "./style";
 import TransparentButton from "../../common/TransparentButton";
+import ProjectCard from "../../common/ProjectCard";
 import { IoChevronBackOutline } from "react-icons/io5";
 
 function ProjectPage(props)
@@ -20,12 +23,14 @@ function ProjectPage(props)
                 </PaperLayout>
                 <PaperLayout padding="0">
                     <CategoryLayout>
-                        <Category selected>안드로이드</Category>
-                        <Category>리액트</Category>
+                        <Category selected>앱</Category>
+                        <Category>웹</Category>
                         <Category>드로잉</Category>
                     </CategoryLayout>
                     <ListLayout>
-
+                        <ProjectCard title="테스트 프로젝트" tags={["Android","Kotlin"]} route="/post/1"/>
+                        <ProjectCard title="테스트 프로젝트" tags={["Android","Kotlin"]} route="/post/1"/>
+                        <ProjectCard title="테스트 프로젝트" tags={["Android","Kotlin"]} route="/post/1"/>
                     </ListLayout>
                 </PaperLayout>
             </ContentLayout>

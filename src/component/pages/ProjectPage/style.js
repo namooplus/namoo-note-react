@@ -39,7 +39,6 @@ export const PaperLayout = styled.div`
     padding: ${props => props.padding};
     background-color: white;
     box-shadow: 0 0 10px lightgray;
-    overflow: scroll;
 
     ${props => props.animate && css`
         animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;
@@ -62,7 +61,8 @@ export const Category = styled.a`
 `
 export const ListLayout = styled.div`
     display: flex;
-    flex-flow: column nowrap;
+    flex-flow: row wrap;
+    justify-content: center;
     padding: calc(1.5rem + 80px) 40px 40px 40px;
     gap: 20px;
     overflow: scroll;

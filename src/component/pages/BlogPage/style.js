@@ -40,7 +40,6 @@ export const PaperLayout = styled.div`
     padding: ${props => props.padding};
     background-color: white;
     box-shadow: 0 0 10px lightgray;
-    /* overflow: scroll; */
 
     ${props => props.animate && css`
         animation: ${paperRevealAnimation} 700ms 0s 1 ease forwards;

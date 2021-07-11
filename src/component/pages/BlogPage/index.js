@@ -2,7 +2,9 @@ import React from "react";
 import { 
     BaseLayout, 
     HeaderLayout, Title,
-    ContentLayout, PaperLayout, CategoryLayout, Category, ListLayout
+    ContentLayout, PaperLayout, 
+    CategoryLayout, Category, 
+    ListLayout
 } from "./style";
 import TransparentButton from "../../common/TransparentButton";
 import PostCard from "../../common/PostCard";
