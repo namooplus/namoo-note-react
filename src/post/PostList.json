@@ -10,5 +10,11 @@
         "title": "테스트 포스트 2",
         "tag": ["Tag1", "Tag2", "Tag3"],
         "recommend": false
+    },
+    {
+        "id": "2021-07-12~code~test-post-3",
+        "title": "테스트 게시물입니다",
+        "tag": ["Test"],
+        "recommend": true
     }
 ]

@@ -58,7 +58,7 @@ function PostDetailPage(props)
             {/* 내용 */}
             <ContentLayout>
                 <Post>
-                    <ReactMarkdown children={selectedPostContent}/>
+                    <ReactMarkdown children={selectedPostContent} skipHtml="false"/>
                 </Post>
             </ContentLayout>
             {/* 오버레이 */}
