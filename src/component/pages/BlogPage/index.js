@@ -1,4 +1,6 @@
 import React from "react";
+import PostList from "../../../post/PostList";
+
 import { 
     BaseLayout, 
     HeaderLayout, Title,
@@ -29,11 +31,15 @@ function BlogPage(props)
                         <Category>카테고리 3</Category>
                     </CategoryLayout>
                     <ListLayout>
-                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/1"/>
-                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/2"/>
-                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/3"/>
-                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/3"/>
-                        <PostCard title="테스트 게시물 제목" date="2021.07.07" tags={["Test1","Test2"]} route="/post/3"/>
+                        {PostList.map((post, index) => 
+                            <PostCard 
+                                key={index}
+                                title={post.title}
+                                thumbnail={require(`../../../post/${post.id}/thumbnail.png`).default}
+                                date={post.id.substring(0, 10)}
+                                tags={post.tag}
+                                link={`/post/${post.id}`}/>
+                        )}
                     </ListLayout>
                 </PaperLayout>
             </ContentLayout>
