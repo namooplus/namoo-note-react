@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import ReactMarkdown from "react-markdown";
+import PostList from "../../../post/PostList";
 
 import { 
     BaseLayout,
@@ -16,6 +18,8 @@ function PostDetailPage(props)
     const { id } = useParams();
 
     const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
+    const [selectedPostInfo, setSelectedPostInfo] = useState();
+    const [selectedPostContent, setSelectedPostContent] = useState('');
 
     const updateHeaderScrollDegree = () => {
         const scrollDegree = window.scrollY / window.innerHeight;
@@ -23,61 +27,32 @@ function PostDetailPage(props)
     };
 
     useEffect(() => {
+        // 스크롤 이벤트
         window.addEventListener('scroll', updateHeaderScrollDegree);
-        return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
-    }, []);
 
-    function scrollTop()
-    {
-        window.scrollTo({ top: 0, behavior: 'smooth'});
-    }
+        // 포스트 정보 불러오기
+        setSelectedPostInfo(PostList.find(post => post.id === id));
+
+        // 포스트 내용 불러오기
+        const md = require(`../../../post/${id}/content.md`).default;
+        fetch(md).then(res => res.text()).then(content => setSelectedPostContent(content));
+
+        return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
+    }, [id]);
+
+    const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
         <BaseLayout whiteDegree={headerScrollDegree}>
             {/* 헤더 */}
             <HeaderLayout opacity={1 - headerScrollDegree * 0.8}>
-                <Title>테스트 게시물 제목</Title>
-                <Description>2021.07.07</Description>
+                <Title>{selectedPostInfo?.title}</Title>
+                <Description>{selectedPostInfo?.id.split('~')[0]}</Description>
             </HeaderLayout>
             {/* 내용 */}
             <ContentLayout>
                 <Post>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
-                    {id}-th PostPage 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용 테스트 내용
-                    테스트 내용 테스트 내용 테스트 내용 테스트 내용 <br/><br/>
+                    <ReactMarkdown children={selectedPostContent}/>
                 </Post>
             </ContentLayout>
             {/* 오버레이 */}

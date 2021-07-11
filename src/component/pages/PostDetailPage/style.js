@@ -44,8 +44,9 @@ export const ContentLayout = styled.div`
     align-items: center;
     padding: 50px;
 `
-export const Post = styled.p`
+export const Post = styled.div`
     width: 600px;
+    min-height: calc(100vh - 100px);
     margin: 0;
 `
 
