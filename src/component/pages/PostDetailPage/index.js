@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import ReactMarkdown from "react-markdown";
 import PostList from "../../../post/PostList";
@@ -34,8 +35,12 @@ function PostDetailPage(props)
         setSelectedPostInfo(PostList.find(post => post.id === id));
 
         // 포스트 내용 불러오기
-        const md = require(`../../../post/${id}/content.md`).default;
-        fetch(md).then(res => res.text()).then(content => setSelectedPostContent(content));
+        try 
+        {
+            const md = require(`../../../post/${id}/content.md`).default;
+            fetch(md).then(res => res.text()).then(content => setSelectedPostContent(content));
+        }
+        catch(e) { setSelectedPostContent('e'); }
 
         return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
     }, [id]);
@@ -43,6 +48,7 @@ function PostDetailPage(props)
     const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
+        selectedPostContent !== 'e' ? (
         <BaseLayout whiteDegree={headerScrollDegree}>
             {/* 헤더 */}
             <HeaderLayout opacity={1 - headerScrollDegree * 0.8}>
@@ -70,7 +76,7 @@ function PostDetailPage(props)
                 <FloatingButton><IoChatboxOutline fontSize="1.4rem"/></FloatingButton>
                 <FloatingButton onClick={scrollTop}><IoArrowUpOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
-        </BaseLayout>
+        </BaseLayout>) : <Redirect to="/error"/>
     );
 }
 
