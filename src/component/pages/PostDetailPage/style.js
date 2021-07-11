@@ -41,12 +41,13 @@ export const Description = styled.h2`
 export const ContentLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
+    min-height: 100vh;
     align-items: center;
     padding: 50px;
+    box-sizing: border-box;
 `
 export const Post = styled.div`
     width: 600px;
-    min-height: calc(100vh - 100px);
     margin: 0;
 `
 
