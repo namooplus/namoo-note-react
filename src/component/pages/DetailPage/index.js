@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
 import PostList from "../../../post/PostList";
+import ProjectList from "../../../project/ProjectList";
 
 import { 
     BaseLayout,
@@ -20,8 +21,10 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 import "./render.css";
 
-function PostDetailPage(props)
+function DetailPage(props)
 {
+    const type = props.type;
+    const list = (type === 'post') ? PostList : ProjectList;
     const { id } = useParams();
 
     const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
@@ -38,12 +41,12 @@ function PostDetailPage(props)
         window.addEventListener('scroll', updateHeaderScrollDegree);
 
         // 포스트 정보 불러오기
-        setSelectedPostInfo(PostList.find(post => post.id === id));
+        setSelectedPostInfo(list.find(item => item.id === id));
 
         // 포스트 내용 불러오기
         try 
         {
-            const md = require(`../../../post/${id}/content.md`).default;
+            const md = require(`../../../${type}/${id}/content.md`).default;
             fetch(md).then(res => res.text()).then(content => setSelectedPostContent(content));
         }
         catch(e) { setSelectedPostContent('e'); }
@@ -66,8 +69,8 @@ function PostDetailPage(props)
         img: ({src, src2, width, width2, alt, ...props}) => (
             <div className="image-container">
                 <div className="image-list">
-                    <img className="image" src={require(`../../../post/${id}/${src}`).default} alt={alt} width={width} {...props}/>
-                    {src2 && <img className="image" src={require(`../../../post/${id}/${src2}`).default} width={width2} alt={alt} {...props}/>}
+                    <img className="image" src={require(`../../../${type}/${id}/${src}`).default} alt={alt} width={width} {...props}/>
+                    {src2 && <img className="image" src={require(`../../../${type}/${id}/${src2}`).default} width={width2} alt={alt} {...props}/>}
                 </div>
                 <span className="image-description">{alt}</span>
             </div>),
@@ -111,7 +114,7 @@ function PostDetailPage(props)
             </ContentLayout>
             {/* 플로팅 메뉴 */}
             <MenuLayout top="0" left="0">
-                <FloatingButton route="/post"><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton route={`/${type}`}><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
             <MenuLayout opacity={headerScrollDegree} bottom="0" right="0">
                 <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>
@@ -122,4 +125,4 @@ function PostDetailPage(props)
     );
 }
 
-export default PostDetailPage;
+export default DetailPage;

@@ -22,7 +22,7 @@ function ProjectPage(props)
         setSelectedCategory(category);
 
         // 프로젝트 리스트 업데이트
-        const filteredList = ProjectList.filter(project => project.id.split('~')[0] === category);
+        const filteredList = ProjectList.filter(project => project.id.split('~')[1] === category);
         setFilteredProjects(filteredList);
     };
 
@@ -57,6 +57,7 @@ function ProjectPage(props)
                                 key={index}
                                 title={project.title}
                                 thumbnail={require(`../../../project/${project.id}/thumbnail.png`).default}
+                                date={project.id.split('~')[0]}
                                 tags={project.tag}
                                 link={`/project/${project.id}`}/>
                         )}

@@ -10,6 +10,7 @@ function ProjectCard(props)
                 <Thumbnail src={props.thumbnail}/>
                 <DescriptionLayout>
                     <Title>{props.title}</Title>
+                    <Date>{props.date}</Date>
                     <TagLayout>
                         {props.tags && props.tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
                     </TagLayout>
@@ -50,6 +51,11 @@ const Title = styled.h3`
     margin: 0;
     color: black;
     font-size: 1.3rem;
+`
+const Date = styled.span`
+    margin: 0;
+    color: gray;
+    font-size: 1rem;
 `
 const TagLayout = styled.div`
     display: flex;

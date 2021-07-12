@@ -3,9 +3,8 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-d
 
 import IntroPage from "./component/pages/IntroPage/index";
 import PostPage from "./component/pages/PostPage/index";
-import PostDetailPage from "./component/pages/PostDetailPage/index";
 import ProjectPage from "./component/pages/ProjectPage/index";
-import ProjectDetailPage from "./component/pages/ProjectDetailPage/index";
+import DetailPage from "./component/pages/DetailPage/index";
 import ErrorPage from "./component/pages/ErrorPage/index";
 
 function App() {
@@ -15,10 +14,10 @@ function App() {
         <Route exact path="/" component={IntroPage}/>
 
         <Route exact path="/post" component={PostPage}/>
-        <Route exact path="/post/:id" component={PostDetailPage}/>
+        <Route exact path="/post/:id" component={() => <DetailPage type="post"/>}/>
 
         <Route exact path="/project" component={ProjectPage}/>
-        <Route exact path="/project/:id" component={ProjectDetailPage}/>
+        <Route exact path="/project/:id" component={() => <DetailPage type="project"/>}/>
 
         <Route exact path="/error" component={ErrorPage}/>
 
