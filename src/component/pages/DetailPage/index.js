@@ -52,7 +52,7 @@ function DetailPage(props)
         catch(e) { setContentText('e'); }
 
         return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
-    }, [contentId]);
+    }, [contentId, contentType, contentList]);
 
     // MD rendering option
     const renderOption = {
