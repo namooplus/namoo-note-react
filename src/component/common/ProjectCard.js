@@ -11,9 +11,7 @@ function ProjectCard(props)
                 <DescriptionLayout>
                     <Title>{props.title}</Title>
                     <Date>{props.date}</Date>
-                    <TagLayout>
-                        {props.tags && props.tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
-                    </TagLayout>
+                    <TagLayout>{props.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
                 </DescriptionLayout>
             </CardLayout>
         </Link>
@@ -61,6 +59,7 @@ const TagLayout = styled.div`
     display: flex;
     flex-flow: row nowrap;
     gap: 7px;
+    margin-top: 15px;
 `
 const Tag = styled.span`
     padding: 5px 7px;

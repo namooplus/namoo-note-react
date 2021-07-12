@@ -11,9 +11,7 @@ function PostCard(props)
                 <DescriptionLayout>
                     <Title>{props.title}</Title>
                     <Date>{props.date}</Date>
-                    <TagLayout>
-                        {props.tags && props.tags.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
-                    </TagLayout>
+                    <TagLayout>{props.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
                 </DescriptionLayout>
             </CardLayout>
         </Link>

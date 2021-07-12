@@ -14,10 +14,10 @@ function App() {
         <Route exact path="/" component={IntroPage}/>
 
         <Route exact path="/post" component={PostPage}/>
-        <Route exact path="/post/:id" component={() => <DetailPage type="post"/>}/>
+        <Route exact path="/post/:contentId" component={() => <DetailPage type="post"/>}/>
 
         <Route exact path="/project" component={ProjectPage}/>
-        <Route exact path="/project/:id" component={() => <DetailPage type="project"/>}/>
+        <Route exact path="/project/:contentId" component={() => <DetailPage type="project"/>}/>
 
         <Route exact path="/error" component={ErrorPage}/>
 

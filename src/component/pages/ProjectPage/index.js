@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProjectList from "../../../project/ProjectList";
+import ProjectList from "../../../data/project/list.json";
 
 import { 
     BaseLayout, 
@@ -8,8 +8,8 @@ import {
     CategoryLayout, Category,
     ListLayout
 } from "./style";
-import TransparentButton from "../../common/TransparentButton";
 import ProjectCard from "../../common/ProjectCard";
+import TransparentButton from "../../common/TransparentButton";
 import { IoChevronBackOutline } from "react-icons/io5";
 
 function ProjectPage(props)
@@ -17,17 +17,17 @@ function ProjectPage(props)
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredProjects, setFilteredProjects] = useState([]);
 
-    const filterCategory = (category) => {
+    const selectCategory = (category) => {
         // 카테고리 변경
         setSelectedCategory(category);
 
         // 프로젝트 리스트 업데이트
-        const filteredList = ProjectList.filter(project => project.id.split('~')[1] === category);
+        const filteredList = ProjectList.filter(project => project.category === category);
         setFilteredProjects(filteredList);
     };
 
     useEffect(() => {
-        filterCategory('app');
+        selectCategory('app');
     }, []);
 
     return (
@@ -43,22 +43,22 @@ function ProjectPage(props)
                     <CategoryLayout>
                         <Category
                             selected={ selectedCategory === 'app' ? true : false }
-                            onClick={() => { filterCategory('app') }}>앱</Category>
+                            onClick={() => { selectCategory('app') }}>앱</Category>
                         <Category
                             selected={ selectedCategory === 'web' ? true : false }
-                            onClick={() => { filterCategory('web') }}>웹</Category>
+                            onClick={() => { selectCategory('web') }}>웹</Category>
                         <Category
                             selected={ selectedCategory === 'drawing' ? true : false }
-                            onClick={() => { filterCategory('drawing') }}>드로잉</Category>
+                            onClick={() => { selectCategory('drawing') }}>드로잉</Category>
                     </CategoryLayout>
                     <ListLayout>
                         {filteredProjects.map((project, index) => 
                             <ProjectCard 
                                 key={index}
                                 title={project.title}
-                                thumbnail={require(`../../../project/${project.id}/thumbnail.png`).default}
-                                date={project.id.split('~')[0]}
-                                tags={project.tag}
+                                thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
+                                date={project.date}
+                                tag={project.tag}
                                 link={`/project/${project.id}`}/>
                         )}
                     </ListLayout>

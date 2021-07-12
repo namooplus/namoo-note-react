@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { useParams } from "react-router";
-import PostList from "../../../post/PostList";
-import ProjectList from "../../../project/ProjectList";
 
 import { 
     BaseLayout,
@@ -23,39 +21,41 @@ import "./render.css";
 
 function DetailPage(props)
 {
-    const type = props.type;
-    const list = (type === 'post') ? PostList : ProjectList;
-    const { id } = useParams();
+    // Initialize content
+    const { contentId } = useParams();
+    const contentType = props.type;
+    const contentList = require(`../../../data/${contentType}/list.json`);
+    const [contentInfo, setContentInfo] = useState();
+    const [contentText, setContentText] = useState('');
 
+    // Initialize scroll state
     const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
-    const [selectedPostInfo, setSelectedPostInfo] = useState();
-    const [selectedPostContent, setSelectedPostContent] = useState('');
-
     const updateHeaderScrollDegree = () => {
         const scrollDegree = window.scrollY / window.innerHeight;
         setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
     };
 
+    // Initialize page
     useEffect(() => {
-        // 스크롤 이벤트
+        // Handle scroll event
         window.addEventListener('scroll', updateHeaderScrollDegree);
 
-        // 포스트 정보 불러오기
-        setSelectedPostInfo(list.find(item => item.id === id));
+        // Get content info
+        setContentInfo(contentList.find(content => content.id === contentId));
 
-        // 포스트 내용 불러오기
+        // Get content text
         try 
         {
-            const md = require(`../../../${type}/${id}/content.md`).default;
-            fetch(md).then(res => res.text()).then(content => setSelectedPostContent(content));
+            const md = require(`../../../data/${contentType}/${contentId}/content.md`).default;
+            fetch(md).then(res => res.text()).then(content => setContentText(content));
         }
-        catch(e) { setSelectedPostContent('e'); }
+        catch(e) { setContentText('e'); }
 
         return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
-    }, [id]);
+    }, [contentId]);
 
-    // md 렌더링
-    const renderer = {
+    // MD rendering option
+    const renderOption = {
         h1: ({children, ...props}) => (
             <div>
                 <br/>
@@ -69,8 +69,8 @@ function DetailPage(props)
         img: ({src, src2, width, width2, alt, ...props}) => (
             <div className="image-container">
                 <div className="image-list">
-                    <img className="image" src={require(`../../../${type}/${id}/${src}`).default} alt={alt} width={width} {...props}/>
-                    {src2 && <img className="image" src={require(`../../../${type}/${id}/${src2}`).default} width={width2} alt={alt} {...props}/>}
+                    <img className="image" src={require(`../../../data/${contentType}/${contentId}/${src}`).default} width={width} alt={alt} {...props}/>
+                    {src2 && <img className="image" src={require(`../../../data/${contentType}/${contentId}/${src2}`).default} width={width2} alt={alt} {...props}/>}
                 </div>
                 <span className="image-description">{alt}</span>
             </div>),
@@ -82,11 +82,12 @@ function DetailPage(props)
         }
     }
 
-    // 클릭 이벤트
+    // Click event
+    const goBack = () => props.history.goBack();
     const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
-        selectedPostContent !== 'e' ? (
+        contentText !== 'e' ? (
         <BaseLayout whiteDegree={headerScrollDegree}>
             {/* 배경 */}
             <BackgroundLayout opacity={1 - headerScrollDegree}>
@@ -96,11 +97,9 @@ function DetailPage(props)
             </BackgroundLayout>
             {/* 헤더 */}
             <HeaderLayout opacity={1 - headerScrollDegree}>
-                <Title>{selectedPostInfo?.title}</Title>
-                <Description>{selectedPostInfo?.id.split('~')[0]}</Description>
-                <TagLayout>
-                    {selectedPostInfo?.tag && selectedPostInfo.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
-                </TagLayout>
+                <Title>{contentInfo?.title}</Title>
+                <Description>{contentInfo?.date}</Description>
+                <TagLayout>{contentInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
             </HeaderLayout>
             {/* 내용 */}
             <ContentLayout>
@@ -108,13 +107,13 @@ function DetailPage(props)
                     <ReactMarkdown
                         remarkPlugins={[gfm]}
                         rehypePlugins={[rehypeRaw]}
-                        components={renderer}
-                        children={selectedPostContent}/>
+                        components={renderOption}
+                        children={contentText}/>
                 </Post>
             </ContentLayout>
             {/* 플로팅 메뉴 */}
             <MenuLayout top="0" left="0">
-                <FloatingButton route={`/${type}`}><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton onClick={goBack}><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
             <MenuLayout opacity={headerScrollDegree} bottom="0" right="0">
                 <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>
@@ -125,4 +124,4 @@ function DetailPage(props)
     );
 }
 
-export default DetailPage;
+export default withRouter(DetailPage);
