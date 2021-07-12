@@ -66,6 +66,7 @@ export const Title = styled.h1`
     margin: 0;
     color: black;
     font-size: 2.5rem;
+    text-align: center;
 `
 export const Description = styled.h2`
     margin: 0;
