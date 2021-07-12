@@ -1,0 +1,41 @@
+.subtitle {
+    margin: 13px 0;
+    text-align: center;
+    font-size: 1.7rem;
+}
+
+.divider {
+    border: 1px solid lightgray;
+    transform: scaleY(0.5);
+}
+
+.link {
+    text-decoration: none;
+    color: hsla(217, 100%, 60%);
+    transition: color 500ms;
+}
+.link:hover {
+    text-decoration: underline;
+    color: hsla(217, 100%, 40%);
+}
+
+.image-container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    gap: 15px;
+    margin: 15px 0;
+}
+.image-list {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    gap: 15px;
+}
+.image {
+    box-shadow: 0 0 20px lightgray;
+}
+.image-description {
+    font-size: 0.8rem;
+    color: gray;
+}
