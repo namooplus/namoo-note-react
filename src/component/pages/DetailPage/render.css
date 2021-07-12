@@ -4,6 +4,16 @@
     font-size: 1.7rem;
 }
 
+.paragraph {
+    line-height: 1.9rem;
+    font-size: 1.1rem;
+}
+
+.ordered-list {
+    line-height: 1.9rem;
+    font-size: 1.1rem;
+}
+
 .divider {
     border: 1px solid lightgray;
     transform: scaleY(0.5);
@@ -15,8 +25,7 @@
     transition: color 500ms;
 }
 .link:hover {
-    text-decoration: underline;
-    color: hsla(217, 100%, 40%);
+    color: hsla(217, 100%, 30%);
 }
 
 .image-container {
@@ -24,7 +33,7 @@
     flex-flow: column nowrap;
     align-items: center;
     gap: 15px;
-    margin: 15px 0;
+    margin: 30px 0;
 }
 .image-list {
     display: flex;

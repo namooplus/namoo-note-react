@@ -31,7 +31,7 @@ function DetailPage(props)
     // Initialize scroll state
     const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
     const updateHeaderScrollDegree = () => {
-        const scrollDegree = window.scrollY / window.innerHeight;
+        const scrollDegree = window.scrollY * 2 / window.innerHeight;
         setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
     };
 
@@ -64,8 +64,10 @@ function DetailPage(props)
                 <hr className="divider" {...props}/>
             </div>
         ),
-        hr: ({...props}) => <hr className="divider" {...props}/>,
+        p: ({children, ...props}) => <p className="paragraph" {...props}>{children}</p>,
+        ol: ({children, ...props}) => <ol className="ordered-list">{children}</ol>,
         a: ({children, ...props}) => <a className="link" {...props}>{children}</a>,
+        hr: ({...props}) => <hr className="divider" {...props}/>,
         img: ({src, src2, width, width2, alt, ...props}) => (
             <div className="image-container">
                 <div className="image-list">
