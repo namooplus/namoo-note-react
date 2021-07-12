@@ -47,7 +47,7 @@ export const ContentLayout = styled.div`
     box-sizing: border-box;
 `
 export const Post = styled.div`
-    width: 600px;
+    width: 700px;
     margin: 0;
 `
 

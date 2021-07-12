@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { Redirect } from "react-router-dom";
 import { useParams } from "react-router";
-import ReactMarkdown from "react-markdown";
 import PostList from "../../../post/PostList";
+
+import ReactMarkdown from "react-markdown";
+import gfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import { 
     BaseLayout,
@@ -45,6 +50,46 @@ function PostDetailPage(props)
         return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
     }, [id]);
 
+    // md 렌더링
+    const renderer = {
+        h1: ({children, ...props}) => (
+            <div>
+                <br/>
+                <hr style={{border: "1px solid lightgray", transform: "scaleY(0.5)"}} {...props}/>
+                <h1 style={{margin: "13px 0", textAlign: "center", fontSize: "1.7rem"}}>{children}</h1>
+                <hr style={{border: "1px solid lightgray", transform: "scaleY(0.5)"}} {...props}/>
+            </div>
+        ),
+        hr: ({...props}) => <hr style={{border: "1px solid lightgray", transform: "scaleY(0.5)"}} {...props}/>,
+        a: ({children, ...props}) => <a {...props}>{children}</a>,
+        img: ({src, src2, width, width2, alt, ...props}) => (
+            <div style={{display: "flex", flexFlow: "column nowrap", alignItems: "center", gap: "15px", margin: "15px 0"}}>
+                <div style={{display: "flex", flexFlow: "row nowrap", justifyContent: "center", gap: "15px"}}>
+                    <img 
+                        style={{boxShadow: "0 0 20px lightgray"}}
+                        src={require(`../../../post/${id}/${src}`).default}
+                        alt={alt}
+                        width={width}
+                        {...props}/>
+                    {src2 && 
+                        <img 
+                            style={{boxShadow: "0 0 20px lightgray"}}
+                            src={require(`../../../post/${id}/${src2}`).default} 
+                            width={width2}
+                            alt={alt}
+                            {...props}/>}
+                </div>
+                <span style={{fontSize: "0.8rem", color: "gray"}}>{alt}</span>
+            </div>),
+        code: ({node, inline, className, children, ...props}) => {
+            const match = /language-(\w+)/.exec(className || '');
+            return !inline && match 
+                ? <SyntaxHighlighter style={materialDark} language={match[1]} children={String(children).replace(/\n$/, '')} {...props}/>
+                : <code className={className} {...props}/>;
+        }
+    }
+
+    // 클릭 이벤트
     const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
@@ -58,7 +103,11 @@ function PostDetailPage(props)
             {/* 내용 */}
             <ContentLayout>
                 <Post>
-                    <ReactMarkdown children={selectedPostContent} skipHtml="false"/>
+                    <ReactMarkdown
+                        remarkPlugins={[gfm]}
+                        rehypePlugins={[rehypeRaw]}
+                        components={renderer}
+                        children={selectedPostContent}/>
                 </Post>
             </ContentLayout>
             {/* 오버레이 */}

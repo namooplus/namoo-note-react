@@ -1,24 +1,32 @@
 이 게시물은 **테스트 게시물**입니다.
 
-# 차근
-## 차근
-### 차근
-#### 차근
-##### 차근
-###### 차근
+# 부제목
+## 헤더
+### 헤더
+#### 헤더
+##### 헤더
+###### 헤더
 
 > 들여쓰기
 >> 들여쓰기
 >>> 들여쓰기
 
-정말 테스트 게시물입니다.
+글글글글글글
 
-<em>strong</em>
+~가리기~
 
-![테스트 이미지](thumbnail.png)
+*기울임*
 
-![테스트 이미지](/assets/images/project/drawing/example2.png){:width="40%"}
-![테스트 이미지](/assets/images/project/drawing/example3.png){:width="40%"}
+**굵게**
+
+<img src="thumbnail.png" src2="thumbnail.png" width="40%" width2="40%" alt="테스트 설명 (사진 2개)"/>
+<img width="40%" src="thumbnail.png" alt="테스트 설명 (사진 1개)"/>
+
+https://www.naver.com/
+
+[Naver](https://www.naver.com/)
+
+~히히히~
 
 ---
 
@@ -49,7 +57,3 @@ printf("Hello World");
 ```
 
 ---
-
-테스트 하다가 이렇게 <span class="spoiler">테스트테스트테스트테스트</span> 글을 숨기기
-
-<cite>— 인용은 이렇게</cite>
