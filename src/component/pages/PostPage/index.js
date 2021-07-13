@@ -6,7 +6,7 @@ import {
     HeaderLayout, Title,
     ContentLayout, PaperLayout, 
     CategoryLayout, Category, 
-    ListLayout
+    ListLayout, ListOverlay, ListContainer
 } from "./style";
 import PostCard from "../../common/PostCard";
 import TransparentButton from "../../common/TransparentButton";
@@ -58,15 +58,18 @@ function PostPage(props)
                             onClick={() => { selectCategory('namoo') }}>나무 노트</Category>
                     </CategoryLayout>
                     <ListLayout>
-                        {filteredPosts.map((post, index) => 
-                            <PostCard 
-                                key={index}
-                                title={post.title}
-                                thumbnail={require(`../../../data/post/${post.id}/thumbnail.png`).default}
-                                date={post.date}
-                                tag={post.tag}
-                                link={`/post/${post.id}`}/>
-                        )}
+                        <ListOverlay/>
+                        <ListContainer>
+                            {filteredPosts.map((post, index) => 
+                                <PostCard 
+                                    key={index}
+                                    title={post.title}
+                                    thumbnail={require(`../../../data/post/${post.id}/thumbnail.png`).default}
+                                    date={post.date}
+                                    tag={post.tag}
+                                    link={`/post/${post.id}`}/>
+                            )}
+                        </ListContainer>
                     </ListLayout>
                 </PaperLayout>
             </ContentLayout>

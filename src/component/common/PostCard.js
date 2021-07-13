@@ -24,6 +24,7 @@ const CardLayout = styled.div`
     display: flex;
     height: 150px;
     flex-flow: row nowrap;
+    background-color: white;
     box-shadow: 0 0 10px lightgray;
     transition: background-color 500ms;
 

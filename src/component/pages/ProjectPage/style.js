@@ -45,12 +45,11 @@ export const PaperLayout = styled.div`
     `}
 `
 export const CategoryLayout = styled.div`
-    position: absolute;
     display: flex;
     width: 100%;
     flex-flow: row wrap;
     box-sizing: border-box;
-    padding: 40px;
+    padding: 40px 40px 0 40px;
     gap: 20px;
     background: linear-gradient(to bottom, white 0%, white 60%, transparent 100%);
 `
@@ -69,11 +68,28 @@ export const Category = styled.button`
     }
 `
 export const ListLayout = styled.div`
+    position: relative;
+    display: flex;
+    flex: 1 0 0;
+    flex-flow: column nowrap;
+`
+export const ListOverlay = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background: linear-gradient(to bottom, white 0%, transparent 100%);
+    pointer-events: none;
+`
+export const ListContainer = styled.div`
     display: flex;
     flex-flow: row wrap;
+    flex: 1 0 0;
     justify-content: center;
-    padding: calc(1.5rem + 80px) 40px 40px 40px;
+    padding: 40px;
     gap: 20px;
+    box-sizing: border-box;
     overflow: scroll;
 `
 

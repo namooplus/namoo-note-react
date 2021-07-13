@@ -6,7 +6,7 @@ import {
     HeaderLayout, Title,
     ContentLayout, PaperLayout,
     CategoryLayout, Category,
-    ListLayout
+    ListLayout, ListOverlay, ListContainer
 } from "./style";
 import ProjectCard from "../../common/ProjectCard";
 import TransparentButton from "../../common/TransparentButton";
@@ -52,15 +52,18 @@ function ProjectPage(props)
                             onClick={() => { selectCategory('drawing') }}>드로잉</Category>
                     </CategoryLayout>
                     <ListLayout>
-                        {filteredProjects.map((project, index) => 
-                            <ProjectCard 
-                                key={index}
-                                title={project.title}
-                                thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
-                                date={project.date}
-                                tag={project.tag}
-                                link={`/project/${project.id}`}/>
-                        )}
+                        <ListOverlay/>
+                        <ListContainer>
+                            {filteredProjects.map((project, index) => 
+                                <ProjectCard 
+                                    key={index}
+                                    title={project.title}
+                                    thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
+                                    date={project.date}
+                                    tag={project.tag}
+                                    link={`/project/${project.id}`}/>
+                            )}
+                        </ListContainer>
                     </ListLayout>
                 </PaperLayout>
             </ContentLayout>
