@@ -48,14 +48,14 @@ function PostPage(props)
                             selected={ selectedCategory === '' ? true : false }
                             onClick={() => { selectCategory() }}>추천</Category>
                         <Category
-                            selected={ selectedCategory === 'info' ? true : false }
-                            onClick={() => { selectCategory('info') }}>정보 노트</Category>
+                            selected={ selectedCategory === '정보 노트' ? true : false }
+                            onClick={() => { selectCategory('정보 노트') }}>정보 노트</Category>
                         <Category
-                            selected={ selectedCategory === 'code' ? true : false }
-                            onClick={() => { selectCategory('code') }}>코딩 노트</Category>
+                            selected={ selectedCategory === '코딩 노트' ? true : false }
+                            onClick={() => { selectCategory('코딩 노트') }}>코딩 노트</Category>
                         <Category
-                            selected={ selectedCategory === 'namoo' ? true : false }
-                            onClick={() => { selectCategory('namoo') }}>나무 노트</Category>
+                            selected={ selectedCategory === '나무 노트' ? true : false }
+                            onClick={() => { selectCategory('나무 노트') }}>나무 노트</Category>
                     </CategoryLayout>
                     <ListLayout>
                         <ListOverlay/>

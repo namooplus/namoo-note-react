@@ -27,7 +27,7 @@ function ProjectPage(props)
     };
 
     useEffect(() => {
-        selectCategory('app');
+        selectCategory('앱');
     }, []);
 
     return (
@@ -42,14 +42,14 @@ function ProjectPage(props)
                 <PaperLayout padding="0">
                     <CategoryLayout>
                         <Category
-                            selected={ selectedCategory === 'app' ? true : false }
-                            onClick={() => { selectCategory('app') }}>앱</Category>
+                            selected={ selectedCategory === '앱' ? true : false }
+                            onClick={() => { selectCategory('앱') }}>앱</Category>
                         <Category
-                            selected={ selectedCategory === 'web' ? true : false }
-                            onClick={() => { selectCategory('web') }}>웹</Category>
+                            selected={ selectedCategory === '웹' ? true : false }
+                            onClick={() => { selectCategory('웹') }}>웹</Category>
                         <Category
-                            selected={ selectedCategory === 'drawing' ? true : false }
-                            onClick={() => { selectCategory('drawing') }}>드로잉</Category>
+                            selected={ selectedCategory === '드로잉' ? true : false }
+                            onClick={() => { selectCategory('드로잉') }}>드로잉</Category>
                     </CategoryLayout>
                     <ListLayout>
                         <ListOverlay/>

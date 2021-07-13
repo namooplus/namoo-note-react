@@ -3,7 +3,7 @@
         "id": "2020-09-15-mac-pushbullet-noti",
         "title": "안드로이드 폰의 알림을 맥에서도 받아보자! (Pushbullet, Noti)",
         "date": "2020-09-15",
-        "category": "info",
+        "category": "정보 노트",
         "tag": ["맥", "Android"],
         "recommend": true
     },
@@ -11,7 +11,7 @@
         "id": "2021-07-12-test-post",
         "title": "테스트 게시물입니다",
         "date": "2021-07-12",
-        "category": "code",
+        "category": "코딩 노트",
         "tag": ["Test"],
         "recommend": false
     }

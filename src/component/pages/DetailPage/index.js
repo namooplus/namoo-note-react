@@ -104,7 +104,11 @@ function DetailPage(props)
             <HeaderLayout opacity={1 - headerScrollDegree}>
                 <Title>{contentInfo?.title}</Title>
                 <Description>{contentInfo?.date}</Description>
-                <TagLayout>{contentInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
+                <TagLayout>
+                    <Tag>{contentInfo?.category}</Tag>
+                    {">"}
+                    {contentInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
+                </TagLayout>
             </HeaderLayout>
             {/* 내용 */}
             <ContentLayout>

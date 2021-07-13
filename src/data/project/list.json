@@ -3,28 +3,28 @@
         "id": "app-namoo-protector",
         "title": "나무프로텍터",
         "date": "2016-현재",
-        "category": "app",
+        "category": "앱",
         "tag": ["Android", "Kotlin"]
     },
     {
         "id": "app-hange",
         "title": "Hange",
         "date": "2016-2017",
-        "category": "app",
+        "category": "앱",
         "tag": ["Android", "Java"]
     },
     {
         "id": "app-why-are-you-here",
         "title": "너 왜 거기 있어",
         "date": "2017",
-        "category": "app",
+        "category": "앱",
         "tag": ["Android", "Java"]
     },
     {
         "id": "web-namoo-note",
         "title": "나무의 노트",
         "date": "2021-현재",
-        "category": "web",
+        "category": "웹",
         "tag": ["React"]
     }
 ]
