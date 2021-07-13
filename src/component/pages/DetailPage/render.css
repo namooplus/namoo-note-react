@@ -9,6 +9,29 @@
     font-size: 1.1rem;
 }
 
+.strong {
+    color:rgb(27, 218, 193);
+    transition: text-shadow 500ms;
+}
+.strong:hover {
+    text-shadow: 0 0 40px rgb(27, 218, 193);
+}
+
+.extra {
+    color: gray;
+}
+
+.quote {
+    background-color: white;
+    border-bottom: 2px solid rgb(27, 218, 193);
+    padding: 10px;
+    box-shadow: 0 0 20px lightgray;
+    text-align: center;
+}
+.quote > p {
+    margin: 0;
+}
+
 .ordered-list {
     line-height: 1.9rem;
     font-size: 1.1rem;
@@ -43,6 +66,10 @@
 }
 .image {
     box-shadow: 0 0 20px lightgray;
+    transition: box-shadow 500ms;
+}
+.image:hover {
+    box-shadow: 0 0 20px gray;
 }
 .image-description {
     font-size: 0.8rem;

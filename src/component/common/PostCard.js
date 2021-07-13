@@ -64,7 +64,7 @@ const TagLayout = styled.div`
 `
 const Tag = styled.span`
     padding: 5px 7px;
-    background: skyblue;
+    background: rgb(27, 218, 193);
     color: black;
     font-size: 0.7rem;
 `

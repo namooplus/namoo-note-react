@@ -59,13 +59,16 @@ function DetailPage(props)
         h1: ({children, ...props}) => (
             <div>
                 <br/>
-                <hr className="divider" {...props}/>
-                <h1 className="subtitle">{children}</h1>
-                <hr className="divider" {...props}/>
+                <hr className="divider"/>
+                <h1 className="subtitle" {...props}>{children}</h1>
+                <hr className="divider"/>
             </div>
         ),
         p: ({children, ...props}) => <p className="paragraph" {...props}>{children}</p>,
-        ol: ({children, ...props}) => <ol className="ordered-list">{children}</ol>,
+        strong: ({children, ...props}) => <strong className="strong" {...props}>{children}</strong>,
+        extra: ({children, ...props}) => <span className="extra" {...props}>{children}</span>,
+        blockquote: ({children, ...props}) => <blockquote className="quote" {...props}>{children}</blockquote>,
+        ol: ({children, ordered, ...props}) => <ol className="ordered-list" ordered={ordered.toString()} {...props}>{children}</ol>,
         a: ({children, ...props}) => <a className="link" {...props}>{children}</a>,
         hr: ({...props}) => <hr className="divider" {...props}/>,
         img: ({src, src2, width, width2, alt, ...props}) => (
