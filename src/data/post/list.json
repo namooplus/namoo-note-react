@@ -8,27 +8,11 @@
         "recommend": true
     },
     {
-        "id": "2021-07-11-test-post-1",
-        "title": "테스트 포스트",
-        "date": "2021-07-11",
-        "category": "info",
-        "tag": ["Tag1", "Tag2"],
-        "recommend": true
-    },
-    {
-        "id": "2021-07-12-test-post-2",
-        "title": "테스트 포스트 2",
-        "date": "2021-07-12",
-        "category": "info",
-        "tag": ["Tag1", "Tag2", "Tag3"],
-        "recommend": false
-    },
-    {
-        "id": "2021-07-12-test-post-3",
+        "id": "2021-07-12-test-post",
         "title": "테스트 게시물입니다",
         "date": "2021-07-12",
         "category": "code",
         "tag": ["Test"],
-        "recommend": true
+        "recommend": false
     }
 ]

@@ -45,11 +45,15 @@ const DescriptionLayout = styled.div`
     flex-flow: column nowrap;
     padding: 20px;
     gap: 7px;
+    overflow-x: hidden;
 `
 const Title = styled.h3`
     margin: 0;
     color: black;
     font-size: 1.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 `
 const Date = styled.span`
     margin: 0;
