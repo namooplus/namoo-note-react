@@ -6,7 +6,7 @@ import {
     BaseLayout,
     BackgroundLayout, GuideLabel, Decoration,
     HeaderLayout, Title, Description, TagLayout, Tag,
-    ContentLayout, Post,
+    ContentLayout, Post, FooterLayout,
     MenuLayout
 } from "./style";
 import FloatingButton from "../../common/FloatingButton";
@@ -115,6 +115,7 @@ function DetailPage(props)
                         components={renderOption}
                         children={contentText}/>
                 </Post>
+                <FooterLayout/>
             </ContentLayout>
             {/* 플로팅 메뉴 */}
             <MenuLayout top="0" left="0">

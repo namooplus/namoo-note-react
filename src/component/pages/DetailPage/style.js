@@ -93,13 +93,17 @@ export const ContentLayout = styled.div`
     flex-flow: column nowrap;
     min-height: 100vh;
     align-items: center;
-    padding: 50px;
-    box-sizing: border-box;
     margin-top: 100vh;
 `
 export const Post = styled.div`
+    flex: 1 0 0;
     width: 700px;
-    margin: 0;
+    margin: 50px;
+`
+export const FooterLayout = styled.div`
+    width: 100%;
+    height: 130px;
+    background: linear-gradient(to bottom, white 0%, #ebfffb 100%);
 `
 
 // 플로팅
