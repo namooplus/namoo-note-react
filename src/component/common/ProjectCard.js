@@ -34,17 +34,25 @@ const CardLayout = styled.div`
     &:active {
         background-color: #dddddd;
     }
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
 `
 const Thumbnail = styled.img`
     width: 250px;
-    height: 250px;
+    aspect-ratio: 1/1;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
 `
 const DescriptionLayout = styled.div`
     display: flex;
-    flex: 1 0 0;
     flex-flow: column nowrap;
     padding: 20px;
     gap: 7px;
+    overflow-x: hidden;
 `
 const Title = styled.h3`
     margin: 0;

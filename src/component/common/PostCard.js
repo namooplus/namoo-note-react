@@ -34,10 +34,19 @@ const CardLayout = styled.div`
     &:active {
         background-color: #dddddd;
     }
+
+    @media only screen and (max-width: 600px) {
+        flex-flow: column nowrap;
+        height: unset;
+    }
 `
 const Thumbnail = styled.img`
     width: 150px;
-    height: 150px;
+    aspect-ratio: 1/1;
+
+    @media only screen and (max-width: 600px) {
+        width: 100%;
+    }
 `
 const DescriptionLayout = styled.div`
     display: flex;
@@ -46,6 +55,10 @@ const DescriptionLayout = styled.div`
     padding: 20px;
     gap: 7px;
     overflow-x: hidden;
+
+    @media only screen and (max-width: 600px) {
+        flex: unset;
+    }
 `
 const Title = styled.h3`
     margin: 0;
@@ -66,6 +79,11 @@ const TagLayout = styled.div`
     flex-flow: row nowrap;
     align-items: flex-end;
     gap: 7px;
+
+    @media only screen and (max-width: 600px) {
+        flex: unset;
+        margin-top: 15px;
+    }
 `
 const Tag = styled.span`
     padding: 5px 7px;
