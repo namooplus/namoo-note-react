@@ -1,4 +1,5 @@
 import styled, { css, keyframes } from "styled-components";
+import { Link } from "react-router-dom";
 
 export const BaseLayout = styled.div`
     display: flex;
@@ -23,11 +24,15 @@ export const HeaderLayout = styled.div`
         padding-top: 40px;
     }
 `
+export const ALink = styled(Link)`
+    text-decoration: none;
+`
 export const Title = styled.h1`
     margin: 0;
     font-size: 2.3rem;
     font-weight: 900;
     letter-spacing: 0.8rem;
+    color: black;
 
     @media only screen and (max-width: 1000px) {
         font-size: 2rem;

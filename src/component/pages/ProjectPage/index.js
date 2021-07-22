@@ -3,7 +3,7 @@ import ProjectList from "../../../data/project/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, Title,
+    HeaderLayout, ALink, Title,
     ContentLayout, PaperLayout,
     CategoryLayout, Category,
     ListLayout, ListOverlay, ListContainer
@@ -33,7 +33,7 @@ function ProjectPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <Title>나무의 노트</Title>
+                <ALink to="/"><Title>나무의 노트</Title></ALink>
             </HeaderLayout>
             <ContentLayout>
                 <PaperLayout padding="10px" animate>

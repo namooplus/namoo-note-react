@@ -21,6 +21,10 @@ export const Title = styled.h1`
     font-size: 3rem;
     font-weight: 900;
     letter-spacing: 1rem;
+
+    @media only screen and (max-width: 600px) {
+        font-size: 2.3rem;
+    }
 `
 export const CoverLayout = styled.div.attrs(props => ({
     style: {
@@ -39,7 +43,11 @@ export const CoverLayout = styled.div.attrs(props => ({
 `
 export const Pencil = styled.img`
     height: 400px;
-    width: 20px;
+    aspect-ratio: 1/20;
+
+    @media only screen and (max-width: 600px) {
+        height: 300px;
+    }
 `
 
 // 두번째 프레임
@@ -57,8 +65,13 @@ export const PaperLayout = styled.div.attrs(props => ({
     height: 80vh;
     width: 400px;
     box-sizing: border-box;
-    padding: 20px;
+    padding: ${props => props.back ? '10px' : '20px'};
     background-color: white;
+
+    @media only screen and (max-width: 600px) {
+        width: 70%;
+        height: 75vh;
+    }
 `
 export const Image = styled.img`
     width: 80px;

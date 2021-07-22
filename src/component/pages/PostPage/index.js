@@ -3,7 +3,7 @@ import PostList from "../../../data/post/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, Title,
+    HeaderLayout, ALink, Title,
     ContentLayout, PaperLayout, 
     CategoryLayout, Category, 
     ListLayout, ListOverlay, ListContainer
@@ -36,7 +36,7 @@ function PostPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <Title>나무의 노트</Title>
+                <ALink to="/"><Title>나무의 노트</Title></ALink>
             </HeaderLayout>
             <ContentLayout>
                 <PaperLayout padding="10px" animate>
@@ -49,13 +49,13 @@ function PostPage(props)
                             onClick={() => { selectCategory() }}>추천</Category>
                         <Category
                             selected={ selectedCategory === '정보 노트' ? true : false }
-                            onClick={() => { selectCategory('정보 노트') }}>정보 노트</Category>
+                            onClick={() => { selectCategory('정보 노트') }}>정보</Category>
                         <Category
                             selected={ selectedCategory === '코딩 노트' ? true : false }
-                            onClick={() => { selectCategory('코딩 노트') }}>코딩 노트</Category>
+                            onClick={() => { selectCategory('코딩 노트') }}>코딩</Category>
                         <Category
                             selected={ selectedCategory === '나무 노트' ? true : false }
-                            onClick={() => { selectCategory('나무 노트') }}>나무 노트</Category>
+                            onClick={() => { selectCategory('나무 노트') }}>나무</Category>
                     </CategoryLayout>
                     <ListLayout>
                         <ListOverlay/>

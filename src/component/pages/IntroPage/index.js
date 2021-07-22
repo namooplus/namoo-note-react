@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery  } from "react-responsive";
 
 import { 
     BaseLayout, FrameLayout, 
@@ -15,6 +16,7 @@ import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 function IntroPage(props)
 {
     const [scrollDegree, setScrollDegree] = useState(0);
+    const isMobile = useMediaQuery({ query: '(max-width: 600px)'});
 
     const updateScrollDegree = () => setScrollDegree(window.scrollY / (document.body.offsetHeight - window.innerHeight));
 
@@ -28,7 +30,7 @@ function IntroPage(props)
             {/* 첫번째 프레임 */}
             <FrameLayout>
                 <Title>나무의 노트</Title>
-                <CoverLayout width={20 + scrollDegree * 60 + '%'}>
+                <CoverLayout width={15 + scrollDegree * 70 + '%'}>
                     <Pencil src={PencilIcon}/>
                 </CoverLayout>
             </FrameLayout>
@@ -36,20 +38,23 @@ function IntroPage(props)
             <FrameLayout>
                 <PaperLayout
                     align="flex-start"
-                    rotate={-8 * scrollDegree + 'deg'}
-                    translate={-80 * scrollDegree + 'px'}
-                    shadowRadius={20 * scrollDegree + 'px'}>
+                    rotate={isMobile ? -4 * scrollDegree + 'deg' : -8 * scrollDegree + 'deg'}
+                    translate={isMobile ? -40 * scrollDegree + 'px' : -60 * scrollDegree + 'px'}
+                    shadowRadius={20 * scrollDegree + 'px'}
+                    back>
                     <TransparentButton onClick={() => window.open('https://github.com/namooplus')}><IoLogoGithub fontSize="1.4rem"/></TransparentButton>
                     <TransparentButton onClick={() => window.open('https://www.instagram.com/min.i.stop/')}><IoLogoInstagram fontSize="1.4rem"/></TransparentButton>
                 </PaperLayout>
                 <PaperLayout
-                    rotate={8 * scrollDegree + 'deg'}
-                    translate={50 * scrollDegree + 'px'}
-                    shadowRadius={20 * scrollDegree + 'px'}/>
+                    rotate={isMobile ? 4 * scrollDegree + 'deg' : 8 * scrollDegree + 'deg'}
+                    translate={isMobile ? 25 * scrollDegree + 'px' : 40 * scrollDegree + 'px'}
+                    shadowRadius={20 * scrollDegree + 'px'}
+                    back/>
                 <PaperLayout
                     align="center"
                     rotate="0"
-                    translate="0"
+                    translateX="0"
+                    translateY="0"
                     shadowRadius={20 * scrollDegree + 'px'}>
                     <Image src={namooIcon} alt="나무 아이콘"/>
                     <Paragraph>
