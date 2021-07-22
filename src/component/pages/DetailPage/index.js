@@ -93,7 +93,7 @@ function DetailPage(props)
 
     return (
         contentText !== 'e' ? (
-        <BaseLayout whiteDegree={headerScrollDegree}>
+        <BaseLayout>
             {/* 배경 */}
             <BackgroundLayout opacity={1 - headerScrollDegree}>
                 <GuideLabel>⌵</GuideLabel>

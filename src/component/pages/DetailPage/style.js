@@ -1,10 +1,6 @@
 import styled from "styled-components";
 
-export const BaseLayout = styled.div.attrs(props => ({
-    style: {
-        backgroundColor: `rgba(255, 255, 255, ${props.whiteDegree})`
-    }
-}))`
+export const BaseLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
 `
@@ -94,11 +90,18 @@ export const ContentLayout = styled.div`
     min-height: 100vh;
     align-items: center;
     margin-top: 100vh;
+    background-color: white;
+    box-shadow: 0 0 20px lightgray;
 `
 export const Post = styled.div`
     flex: 1 0 0;
     width: 700px;
-    margin: 50px;
+    padding: 30px;
+    box-sizing: border-box;
+
+    @media only screen and (max-width: 700px) {
+        width: 100%;
+    }
 `
 export const FooterLayout = styled.div`
     width: 100%;
