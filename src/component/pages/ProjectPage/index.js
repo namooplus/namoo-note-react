@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import ProjectList from "../../../data/project/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, ALink, Title,
+    HeaderLayout, ALink, Title, Icon,
     ContentLayout, PaperLayout,
     CategoryLayout, Category,
     ListLayout, ListOverlay, ListContainer
 } from "./style";
 import ProjectCard from "../../common/ProjectCard";
 import TransparentButton from "../../common/TransparentButton";
-import { IoChevronBackOutline } from "react-icons/io5";
+import namooIcon from "../../../image/namoo.png";
+import { IoSyncOutline } from "react-icons/io5";
 
 function ProjectPage(props)
 {
+    const isMobile = useMediaQuery({ query: '(max-width: 1000px)'});
+
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredProjects, setFilteredProjects] = useState([]);
 
@@ -33,12 +37,17 @@ function ProjectPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <ALink to="/"><Title>나무의 노트</Title></ALink>
+                <ALink to="/">
+                    {isMobile 
+                        ? <Icon src={namooIcon} alt="나무 아이콘"/> 
+                        : <Title>나무의<br/>프로젝트</Title>}
+                </ALink>
             </HeaderLayout>
             <ContentLayout>
-                <PaperLayout padding="10px" animate>
-                    <TransparentButton route="/"><IoChevronBackOutline fontSize="1.4rem"/></TransparentButton>
-                </PaperLayout>
+                {isMobile || 
+                    <PaperLayout padding="10px" animate>
+                        <TransparentButton route="/post"><IoSyncOutline fontSize="1.4rem"/></TransparentButton>
+                    </PaperLayout>}
                 <PaperLayout padding="0">
                     <CategoryLayout>
                         <Category

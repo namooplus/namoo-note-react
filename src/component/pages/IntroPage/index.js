@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMediaQuery  } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 
 import { 
     BaseLayout, FrameLayout, 

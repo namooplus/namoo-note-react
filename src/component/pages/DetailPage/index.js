@@ -10,7 +10,7 @@ import {
     MenuLayout
 } from "./style";
 import FloatingButton from "../../common/FloatingButton";
-import { IoCloseOutline, IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
+import { IoChevronBackOutline, IoHomeOutline, IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
@@ -123,7 +123,8 @@ function DetailPage(props)
             </ContentLayout>
             {/* 플로팅 메뉴 */}
             <MenuLayout top="0" left="0">
-                <FloatingButton onClick={goBack}><IoCloseOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton onClick={goBack}><IoChevronBackOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton route="/"><IoHomeOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
             <MenuLayout opacity={headerScrollDegree} bottom="0" right="0">
                 <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>

@@ -21,7 +21,7 @@ export const HeaderLayout = styled.div`
 
     @media only screen and (max-width: 1000px) {
         width: 100%;
-        padding-top: 40px;
+        padding-top: 20px;
     }
 `
 export const ALink = styled(Link)`
@@ -33,10 +33,10 @@ export const Title = styled.h1`
     font-weight: 900;
     letter-spacing: 0.8rem;
     color: black;
-
-    @media only screen and (max-width: 1000px) {
-        font-size: 2rem;
-    }
+`
+export const Icon = styled.img` 
+    width: 70px;
+    height: 70px;
 `
 
 // 내용
@@ -66,16 +66,25 @@ export const PaperLayout = styled.div`
             display: none;
         }
     `}
+
+    @media only screen and (max-width: 1000px) {
+        height: 95%;
+    }
 `
 export const CategoryLayout = styled.div`
     display: flex;
     width: 100%;
     flex-flow: row nowrap;
+    justify-content: center;
     box-sizing: border-box;
     padding: 40px 40px 0 40px;
     gap: 20px;
     white-space: nowrap;
     overflow-x: scroll;
+
+    @media only screen and (max-width: 1000px) {
+        padding: 30px 30px 0 30px;
+    }
 `
 export const Category = styled.button`
     padding: 0;
@@ -105,6 +114,10 @@ export const ListOverlay = styled.div`
     height: 40px;
     background: linear-gradient(to bottom, white 0%, transparent 100%);
     pointer-events: none;
+
+    @media only screen and (max-width: 1000px) {
+        height: 30px;
+    }
 `
 export const ListContainer = styled.div`
     display: flex;
@@ -114,6 +127,10 @@ export const ListContainer = styled.div`
     gap: 20px;
     box-sizing: border-box;
     overflow: scroll;
+
+    @media only screen and (max-width: 1000px) {
+        padding: 30px;
+    }
 `
 
 // 애니메이션
