@@ -4,13 +4,14 @@ import { useParams } from "react-router";
 
 import { 
     BaseLayout,
-    BackgroundLayout, GuideLabel, Decoration,
-    HeaderLayout, Title, Description, TagLayout, Tag,
-    ContentLayout, Post, FooterLayout,
+    HeaderLayout,
+    Title, Description, TagLayout, Tag, Divider,
+    ContentLayout, Post,
     MenuLayout
 } from "./style";
+import IconButton from "../../common/IconButton";
 import FloatingButton from "../../common/FloatingButton";
-import { IoChevronBackOutline, IoHomeOutline, IoShareSocialOutline, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
+import { IoChevronBackOutline, IoMenu, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
@@ -28,18 +29,8 @@ function DetailPage(props)
     const [contentInfo, setContentInfo] = useState();
     const [contentText, setContentText] = useState('');
 
-    // Initialize scroll state
-    const [headerScrollDegree, setHeaderScrollDegree] = useState(0);
-    const updateHeaderScrollDegree = () => {
-        const scrollDegree = window.scrollY * 2 / window.innerHeight;
-        setHeaderScrollDegree(scrollDegree > 1 ? 1 : scrollDegree);
-    };
-
     // Initialize page
     useEffect(() => {
-        // Handle scroll event
-        window.addEventListener('scroll', updateHeaderScrollDegree);
-
         // Get content info
         setContentInfo(contentList.find(content => content.id === contentId));
 
@@ -50,8 +41,6 @@ function DetailPage(props)
             fetch(md).then(res => res.text()).then(content => setContentText(content));
         }
         catch(e) { setContentText('e'); }
-
-        return () => window.removeEventListener('scroll', updateHeaderScrollDegree);
     }, [contentId, contentType, contentList]);
 
     // MD rendering option
@@ -89,19 +78,18 @@ function DetailPage(props)
 
     // Click event
     const goBack = () => props.history.goBack();
-    const scrollTop = () => window.scrollTo({ top: 0, behavior: 'smooth'});
+    const scrollTop = () => document.getElementById("content").scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
         contentText !== 'e' ? (
         <BaseLayout>
-            {/* 배경 */}
-            <BackgroundLayout opacity={1 - headerScrollDegree}>
-                <GuideLabel>⌵</GuideLabel>
-                <Decoration top="-10rem" left="10rem">나</Decoration>
-                <Decoration bottom="-8rem" right="10rem">무</Decoration>
-            </BackgroundLayout>
             {/* 헤더 */}
-            <HeaderLayout opacity={1 - headerScrollDegree}>
+            <HeaderLayout>
+                <IconButton icon={IoChevronBackOutline} color="white" size="1.7rem" onClick={goBack}/>
+                <IconButton icon={IoMenu} color="white" size="1.7rem" route="/"/>
+            </HeaderLayout>
+            {/* 내용 */}
+            <ContentLayout id="content">
                 <Title>{contentInfo?.title}</Title>
                 <Description>{contentInfo?.date}</Description>
                 <TagLayout>
@@ -109,9 +97,7 @@ function DetailPage(props)
                     {">"}
                     {contentInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
                 </TagLayout>
-            </HeaderLayout>
-            {/* 내용 */}
-            <ContentLayout>
+                <Divider/>
                 <Post>
                     <ReactMarkdown
                         remarkPlugins={[gfm]}
@@ -119,15 +105,9 @@ function DetailPage(props)
                         components={renderOption}
                         children={contentText}/>
                 </Post>
-                <FooterLayout/>
             </ContentLayout>
             {/* 플로팅 메뉴 */}
-            <MenuLayout top="0" left="0">
-                <FloatingButton onClick={goBack}><IoChevronBackOutline fontSize="1.4rem"/></FloatingButton>
-                <FloatingButton route="/"><IoHomeOutline fontSize="1.4rem"/></FloatingButton>
-            </MenuLayout>
-            <MenuLayout opacity={headerScrollDegree} bottom="0" right="0">
-                <FloatingButton><IoShareSocialOutline fontSize="1.4rem"/></FloatingButton>
+            <MenuLayout>
                 <FloatingButton><IoChatboxOutline fontSize="1.4rem"/></FloatingButton>
                 <FloatingButton onClick={scrollTop}><IoArrowUpOutline fontSize="1.4rem"/></FloatingButton>
             </MenuLayout>
