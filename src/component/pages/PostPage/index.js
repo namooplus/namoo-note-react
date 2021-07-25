@@ -58,24 +58,6 @@ function PostPage(props)
                     date={post.date}
                     tag={post.tag}
                     link={`/post/${post.id}`}/>)}
-                <PostCard 
-                    title="엥에ㅔ엥"
-                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
-                    date="20202020"
-                    tag={["아아", "오오"]}
-                    link="/"/>
-                <PostCard 
-                    title="엥에ㅔ엥"
-                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
-                    date="20202020"
-                    tag={["아아", "오오"]}
-                    link="/"/>
-                <PostCard 
-                    title="엥에ㅔ엥"
-                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
-                    date="20202020"
-                    tag={["아아", "오오"]}
-                    link="/"/>
             </ContentLayout>
             <OverlayLayout/>
         </BaseLayout>

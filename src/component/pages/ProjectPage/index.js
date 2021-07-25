@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import ProjectList from "../../../data/project/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, ALink, Title, Icon,
-    ContentLayout, PaperLayout,
-    CategoryLayout, Category,
-    ListLayout, ListOverlay, ListContainer
+    HeaderLayout, LinkWrapper, Title, CategoryLayout, Category,
+    ContentLayout,
+    OverlayLayout
 } from "./style";
-import ProjectCard from "../../common/ProjectCard";
-import IconButton from "../../common/IconButton";
-import namooIcon from "../../../image/namoo.png";
-import { IoSyncOutline } from "react-icons/io5";
+import PostCard from "../../common/PostCard";
 
 function ProjectPage(props)
 {
-    const isMobile = useMediaQuery({ query: '(max-width: 1000px)'});
-
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredProjects, setFilteredProjects] = useState([]);
 
@@ -37,45 +30,30 @@ function ProjectPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <ALink to="/">
-                    {isMobile 
-                        ? <Icon src={namooIcon} alt="나무 아이콘"/> 
-                        : <Title>나무의<br/>프로젝트</Title>}
-                </ALink>
+                <LinkWrapper to="/"><Title>나무의<br/>노트</Title></LinkWrapper>
+                <CategoryLayout>
+                    <Category
+                        selected={ selectedCategory === '앱' ? true : false }
+                        onClick={() => { selectCategory('앱') }}>앱</Category>
+                    <Category
+                        selected={ selectedCategory === '웹' ? true : false }
+                        onClick={() => { selectCategory('웹') }}>웹</Category>
+                    <Category
+                        selected={ selectedCategory === '드로잉' ? true : false }
+                        onClick={() => { selectCategory('드로잉') }}>드로잉</Category>
+                </CategoryLayout>
             </HeaderLayout>
             <ContentLayout>
-                {isMobile || 
-                    <PaperLayout padding="10px" animate>
-                        <IconButton icon={IoSyncOutline} route="/post"/>
-                    </PaperLayout>}
-                <PaperLayout padding="0">
-                    <CategoryLayout>
-                        <Category
-                            selected={ selectedCategory === '앱' ? true : false }
-                            onClick={() => { selectCategory('앱') }}>앱</Category>
-                        <Category
-                            selected={ selectedCategory === '웹' ? true : false }
-                            onClick={() => { selectCategory('웹') }}>웹</Category>
-                        <Category
-                            selected={ selectedCategory === '드로잉' ? true : false }
-                            onClick={() => { selectCategory('드로잉') }}>드로잉</Category>
-                    </CategoryLayout>
-                    <ListLayout>
-                        <ListOverlay/>
-                        <ListContainer>
-                            {filteredProjects.map((project, index) => 
-                                <ProjectCard 
-                                    key={index}
-                                    title={project.title}
-                                    thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
-                                    date={project.date}
-                                    tag={project.tag}
-                                    link={`/project/${project.id}`}/>
-                            )}
-                        </ListContainer>
-                    </ListLayout>
-                </PaperLayout>
+                {filteredProjects.map((project, index) => 
+                <PostCard 
+                    key={index}
+                    title={project.title}
+                    thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
+                    date={project.date}
+                    tag={project.tag}
+                    link={`/project/${project.id}`}/>)}
             </ContentLayout>
+            <OverlayLayout/>
         </BaseLayout>
     );
 }
