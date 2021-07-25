@@ -18,12 +18,12 @@ const Button = styled.button`
     background-color: black;
     color: white;
     font-size: 1rem;
-    transition: background-color 200ms;
+    transition: opacity 200ms;
 
     &:hover {
-        background-color: #555555;
+        opacity: 0.8;
     }
     &:active {
-        background-color: #333333;
+        opacity: 0.6;
     }
 `

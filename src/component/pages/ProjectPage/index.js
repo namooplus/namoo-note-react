@@ -10,7 +10,7 @@ import {
     ListLayout, ListOverlay, ListContainer
 } from "./style";
 import ProjectCard from "../../common/ProjectCard";
-import TransparentButton from "../../common/TransparentButton";
+import IconButton from "../../common/IconButton";
 import namooIcon from "../../../image/namoo.png";
 import { IoSyncOutline } from "react-icons/io5";
 
@@ -46,7 +46,7 @@ function ProjectPage(props)
             <ContentLayout>
                 {isMobile || 
                     <PaperLayout padding="10px" animate>
-                        <TransparentButton route="/post"><IoSyncOutline fontSize="1.4rem"/></TransparentButton>
+                        <IconButton icon={IoSyncOutline} route="/post"/>
                     </PaperLayout>}
                 <PaperLayout padding="0">
                     <CategoryLayout>
