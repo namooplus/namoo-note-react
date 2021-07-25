@@ -15,7 +15,7 @@ function IntroPage(props)
     return (
         <BaseLayout>
             {/* 첫번째 프레임 */}
-            <FrameLayout backgroundColor="skyblue">
+            <FrameLayout backgroundColor="#21D1C2">
                 <Greeting>안녕하세요!<br/>저는<br/>나무입니다.</Greeting>
             </FrameLayout>
             {/* 두번째 프레임 */}

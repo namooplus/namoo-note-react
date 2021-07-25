@@ -1,23 +1,16 @@
 import React, { useEffect, useState } from "react";
-import { useMediaQuery } from "react-responsive";
 import PostList from "../../../data/post/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, ALink, Title, Icon,
-    ContentLayout, PaperLayout, 
-    CategoryLayout, Category, 
-    ListLayout, ListOverlay, ListContainer
+    HeaderLayout, LinkWrapper, Title, CategoryLayout, Category,
+    ContentLayout,
+    OverlayLayout
 } from "./style";
 import PostCard from "../../common/PostCard";
-import IconButton from "../../common/IconButton";
-import namooIcon from "../../../image/namoo.png";
-import { IoSyncOutline } from "react-icons/io5";
 
 function PostPage(props)
 {
-    const isMobile = useMediaQuery({ query: '(max-width: 1000px)'});
-
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -40,48 +33,51 @@ function PostPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <ALink to="/">
-                    {isMobile 
-                        ? <Icon src={namooIcon} alt="나무 아이콘"/> 
-                        : <Title>나무의<br/>블로그</Title>}
-                </ALink>
+                <LinkWrapper to="/"><Title>나무의<br/>노트</Title></LinkWrapper>
+                <CategoryLayout>
+                    <Category
+                        selected={ selectedCategory === '' ? true : false }
+                        onClick={() => { selectCategory() }}>추천</Category>
+                    <Category
+                        selected={ selectedCategory === '정보' ? true : false }
+                        onClick={() => { selectCategory('정보') }}>정보</Category>
+                    <Category
+                        selected={ selectedCategory === '코딩' ? true : false }
+                        onClick={() => { selectCategory('코딩') }}>코딩</Category>
+                    <Category
+                        selected={ selectedCategory === '나무' ? true : false }
+                        onClick={() => { selectCategory('나무') }}>나무</Category>
+                </CategoryLayout>
             </HeaderLayout>
             <ContentLayout>
-                {isMobile || 
-                    <PaperLayout padding="10px" animate>
-                        <IconButton icon={IoSyncOutline} route="/project"/>
-                    </PaperLayout>}
-                <PaperLayout padding="0">
-                    <CategoryLayout>
-                        <Category
-                            selected={ selectedCategory === '' ? true : false }
-                            onClick={() => { selectCategory() }}>추천</Category>
-                        <Category
-                            selected={ selectedCategory === '정보 노트' ? true : false }
-                            onClick={() => { selectCategory('정보 노트') }}>정보</Category>
-                        <Category
-                            selected={ selectedCategory === '코딩 노트' ? true : false }
-                            onClick={() => { selectCategory('코딩 노트') }}>코딩</Category>
-                        <Category
-                            selected={ selectedCategory === '나무 노트' ? true : false }
-                            onClick={() => { selectCategory('나무 노트') }}>나무</Category>
-                    </CategoryLayout>
-                    <ListLayout>
-                        <ListOverlay/>
-                        <ListContainer>
-                            {filteredPosts.map((post, index) => 
-                                <PostCard 
-                                    key={index}
-                                    title={post.title}
-                                    thumbnail={require(`../../../data/post/${post.id}/thumbnail.png`).default}
-                                    date={post.date}
-                                    tag={post.tag}
-                                    link={`/post/${post.id}`}/>
-                            )}
-                        </ListContainer>
-                    </ListLayout>
-                </PaperLayout>
+                {filteredPosts.map((post, index) => 
+                <PostCard 
+                    key={index}
+                    title={post.title}
+                    thumbnail={require(`../../../data/post/${post.id}/thumbnail.png`).default}
+                    date={post.date}
+                    tag={post.tag}
+                    link={`/post/${post.id}`}/>)}
+                <PostCard 
+                    title="엥에ㅔ엥"
+                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
+                    date="20202020"
+                    tag={["아아", "오오"]}
+                    link="/"/>
+                <PostCard 
+                    title="엥에ㅔ엥"
+                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
+                    date="20202020"
+                    tag={["아아", "오오"]}
+                    link="/"/>
+                <PostCard 
+                    title="엥에ㅔ엥"
+                    thumbnail={require(`../../../data/post/2020-09-15-mac-pushbullet-noti/thumbnail.png`).default}
+                    date="20202020"
+                    tag={["아아", "오오"]}
+                    link="/"/>
             </ContentLayout>
+            <OverlayLayout/>
         </BaseLayout>
     );
 }
