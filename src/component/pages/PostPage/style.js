@@ -39,6 +39,7 @@ export const ContentLayout = styled.div`
     padding: 50px;
     box-sizing: border-box;
     gap: 10px;
+    overflow-x: hidden;
     overflow-y: scroll;
 `
 export const Title = styled.h1`

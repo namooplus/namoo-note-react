@@ -13,6 +13,7 @@ export const BaseLayout = styled.div`
 
 // 헤더
 export const HeaderLayout = styled.div`
+    position: relative;
     display: flex;
     width: 250px;
     flex-flow: column nowrap;
@@ -108,6 +109,14 @@ const collapseAnimation = keyframes`
         width: 0;
     }
 `
+const collapseAnimationMobile = keyframes`
+    0% {
+        height: calc(50% - 120px);
+    }
+    100% {
+        height: 0;
+    }
+`
 
 // 오버레이
 export const OverlayLayout = styled.div`
@@ -116,4 +125,11 @@ export const OverlayLayout = styled.div`
     height: 100%;
     background-color: #21D1C2;
     animation: ${collapseAnimation} 600ms 0s 1 ease forwards;
+
+    @media only screen and (max-width: 650px) {
+        top: 120px;
+        left: unset;
+        width: 100%;
+        animation: ${collapseAnimationMobile} 600ms 0s 1 ease forwards;
+    }
 `
