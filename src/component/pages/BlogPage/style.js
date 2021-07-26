@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
 
 export const BaseLayout = styled.div`
     position: relative;
@@ -31,15 +30,6 @@ export const HeaderLayout = styled.div`
         padding: 20px 30px 20px 30px;
     }
 `
-export const LinkWrapper = styled(Link)`
-    text-decoration: none;
-
-    @media only screen and (max-width: 650px) {
-        position: absolute;
-        top: 20px;
-        left: 30px;
-    }
-`
 export const Title = styled.h1`
     margin: 0;
     text-align: center;
@@ -53,6 +43,9 @@ export const Title = styled.h1`
     }
 
     @media only screen and (max-width: 650px) {
+        position: absolute;
+        top: 20px;
+        left: 30px;
         font-size: 1.6rem;
     }
 `

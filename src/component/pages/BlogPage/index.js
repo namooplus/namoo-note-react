@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import queryString from "query-string";
 import PostList from "../../../post/blog/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, LinkWrapper, Title, CategoryLayout, Category,
+    HeaderLayout, Title, CategoryLayout, Category,
     ContentLayout,
     OverlayLayout
 } from "./style";
@@ -12,44 +14,34 @@ import PostCard from "../../common/PostCard";
 
 function BlogPage(props)
 {
-    const isMobile = useMediaQuery({ query: '(max-width: 700px)' });
+    // Media query
+    const isMobile = useMediaQuery({ query: '(max-width: 650px)' });
 
-    const [selectedCategory, setSelectedCategory] = useState('');
+    // Category
+    const category = queryString.parse(props.location.search).category;
     const [filteredPosts, setFilteredPosts] = useState([]);
 
-    const selectCategory = (category) => {
-        // 카테고리 변경
-        if (category) setSelectedCategory(category);
-        else setSelectedCategory('');
-
-        // 포스트 리스트 업데이트
+    useEffect(() => {
+        // Filter posts by category
         const filteredList = category 
             ? PostList.filter(post => post.category === category) 
             : PostList.filter(post => post.recommend === true);
         setFilteredPosts(filteredList);
-    };
+    }, [category]);
 
-    useEffect(() => {
-        selectCategory();
-    }, []);
+    // Click event
+    const pushLink = (route) => props.history.push(route);
+    const replaceLink = (route) => props.history.replace(route);
 
     return (
         <BaseLayout>
             <HeaderLayout>
-                <LinkWrapper to="/"><Title>나무의{isMobile || <br/>}노트</Title></LinkWrapper>
+                <Title onClick={() => pushLink("/")}>나무의{isMobile || <br/>}노트</Title>
                 <CategoryLayout>
-                    <Category
-                        selected={ selectedCategory === '' ? true : false }
-                        onClick={() => { selectCategory() }}>추천</Category>
-                    <Category
-                        selected={ selectedCategory === '정보' ? true : false }
-                        onClick={() => { selectCategory('정보') }}>정보</Category>
-                    <Category
-                        selected={ selectedCategory === '코딩' ? true : false }
-                        onClick={() => { selectCategory('코딩') }}>코딩</Category>
-                    <Category
-                        selected={ selectedCategory === '나무' ? true : false }
-                        onClick={() => { selectCategory('나무') }}>나무</Category>
+                    <Category onClick={() => replaceLink("/blog")} selected={category === undefined}>추천</Category>
+                    <Category onClick={() => replaceLink("/blog?category=정보")} selected={category === '정보'}>정보</Category>
+                    <Category onClick={() => replaceLink("/blog?category=코딩")} selected={category === '코딩'}>코딩</Category>
+                    <Category onClick={() => replaceLink("/blog?category=나무")} selected={category === '나무'}>나무</Category>
                 </CategoryLayout>
             </HeaderLayout>
             <ContentLayout>
@@ -60,11 +52,11 @@ function BlogPage(props)
                     thumbnail={require(`../../../post/blog/${post.id}/thumbnail.png`).default}
                     date={post.date}
                     tag={post.tag}
-                    link={`/post/${post.id}`}/>)}
+                    onClick={() => pushLink(`/post/${post.id}`)}/>)}
             </ContentLayout>
             <OverlayLayout/>
         </BaseLayout>
     );
 }
 
-export default BlogPage;
+export default withRouter(BlogPage);

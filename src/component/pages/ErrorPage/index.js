@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import { BaseLayout, Warning } from "./style";
 import SimpleButton from "../../common/SimpleButton";
@@ -15,4 +16,4 @@ function ErrorPage(props)
     );
 }
 
-export default ErrorPage;
+export default withRouter(ErrorPage);

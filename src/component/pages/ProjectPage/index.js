@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { withRouter } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import queryString from "query-string";
 import PostList from "../../../post/project/list.json";
 
 import { 
     BaseLayout, 
-    HeaderLayout, LinkWrapper, Title, CategoryLayout, Category,
+    HeaderLayout, Title, CategoryLayout, Category,
     ContentLayout,
     OverlayLayout
 } from "./style";
@@ -11,36 +14,31 @@ import PostCard from "../../common/PostCard";
 
 function ProjectPage(props)
 {
-    const [selectedCategory, setSelectedCategory] = useState('');
+    // Media query
+    const isMobile = useMediaQuery({ query: '(max-width: 650px)' });
+
+    // Category
+    const category = queryString.parse(props.location.search).category;
     const [filteredPosts, setFilteredPosts] = useState([]);
 
-    const selectCategory = (category) => {
-        // 카테고리 변경
-        setSelectedCategory(category);
-
-        // 프로젝트 리스트 업데이트
+    useEffect(() => {
+        // Filter posts by category
         const filteredList = PostList.filter(post => post.category === category);
         setFilteredPosts(filteredList);
-    };
+    }, [category]);
 
-    useEffect(() => {
-        selectCategory('앱');
-    }, []);
+    // Click event
+    const pushLink = (route) => props.history.push(route);
+    const replaceLink = (route) => props.history.replace(route);
 
     return (
         <BaseLayout>
             <HeaderLayout>
-                <LinkWrapper to="/"><Title>나무의<br/>노트</Title></LinkWrapper>
+                <Title onClick={() => pushLink("/")}>나무의{isMobile || <br/>}노트</Title>
                 <CategoryLayout>
-                    <Category
-                        selected={ selectedCategory === '앱' ? true : false }
-                        onClick={() => { selectCategory('앱') }}>앱</Category>
-                    <Category
-                        selected={ selectedCategory === '웹' ? true : false }
-                        onClick={() => { selectCategory('웹') }}>웹</Category>
-                    <Category
-                        selected={ selectedCategory === '드로잉' ? true : false }
-                        onClick={() => { selectCategory('드로잉') }}>드로잉</Category>
+                    <Category onClick={() => replaceLink("/project?category=앱")} selected={category === '앱'}>앱</Category>
+                    <Category onClick={() => replaceLink("/project?category=웹")} selected={category === '웹'}>웹</Category>
+                    <Category onClick={() => replaceLink("/project?category=드로잉")} selected={category === '드로잉'}>드로잉</Category>
                 </CategoryLayout>
             </HeaderLayout>
             <ContentLayout>
@@ -51,11 +49,11 @@ function ProjectPage(props)
                     thumbnail={require(`../../../post/project/${post.id}/thumbnail.png`).default}
                     date={post.date}
                     tag={post.tag}
-                    link={`/post/${post.id}`}/>)}
+                    onClick={() => pushLink(`/post/${post.id}`)}/>)}
             </ContentLayout>
             <OverlayLayout/>
         </BaseLayout>
     );
 }
 
-export default ProjectPage;
+export default withRouter(ProjectPage);

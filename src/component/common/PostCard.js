@@ -1,28 +1,21 @@
-import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 function PostCard(props)
 {
     return (
-        <LinkWrapper to={props.link}>
-            <CardLayout>
-                <Thumbnail src={props.thumbnail}/>
-                <DescriptionLayout>
-                    <Title>{props.title}</Title>
-                    <Date>{props.date}</Date>
-                    <TagLayout>{props.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
-                </DescriptionLayout>
-            </CardLayout>
-        </LinkWrapper>
+        <CardLayout onClick={props.onClick}>
+            <Thumbnail src={props.thumbnail}/>
+            <DescriptionLayout>
+                <Title>{props.title}</Title>
+                <Date>{props.date}</Date>
+                <TagLayout>{props.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}</TagLayout>
+            </DescriptionLayout>
+        </CardLayout>
     );
 }
 
 export default PostCard;
 
-const LinkWrapper = styled(Link)`
-    text-decoration: none;
-`
 const CardLayout = styled.div`
     display: flex;
     width: 300px;

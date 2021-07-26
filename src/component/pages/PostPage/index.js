@@ -5,8 +5,7 @@ import { useParams } from "react-router";
 import { 
     BaseLayout,
     HeaderLayout,
-    Title, Description, TagLayout, Tag, Divider,
-    ContentLayout, Post,
+    ContentLayout, Title, Description, TagLayout, Tag, Divider, Post,
     MenuLayout
 } from "./style";
 import IconButton from "../../common/IconButton";
@@ -77,6 +76,7 @@ function PostPage(props)
     }
 
     // Click event
+    const pushLink = (route) => props.history.push(route);
     const goBack = () => props.history.goBack();
     const scrollTop = () => document.getElementById("content").scrollTo({ top: 0, behavior: 'smooth'});
 
@@ -86,7 +86,7 @@ function PostPage(props)
             {/* 헤더 */}
             <HeaderLayout>
                 <IconButton icon={IoChevronBackOutline} color="white" size="1.7rem" onClick={goBack}/>
-                <IconButton icon={IoMenu} color="white" size="1.7rem" route="/"/>
+                <IconButton icon={IoMenu} color="white" size="1.7rem" onClick={() => pushLink("/")}/>
             </HeaderLayout>
             {/* 내용 */}
             <ContentLayout id="content">
@@ -108,8 +108,8 @@ function PostPage(props)
             </ContentLayout>
             {/* 플로팅 메뉴 */}
             <MenuLayout>
-                <FloatingButton><IoChatboxOutline fontSize="1.4rem"/></FloatingButton>
-                <FloatingButton onClick={scrollTop}><IoArrowUpOutline fontSize="1.4rem"/></FloatingButton>
+                <FloatingButton icon={IoChatboxOutline}/>
+                <FloatingButton onClick={scrollTop} icon={IoArrowUpOutline}/>
             </MenuLayout>
         </BaseLayout>) : <Redirect to="/error"/>
     );

@@ -1,5 +1,4 @@
 import styled, { keyframes } from "styled-components";
-import { Link } from "react-router-dom";
 
 export const BaseLayout = styled.div`
     position: relative;
@@ -17,9 +16,6 @@ export const HeaderLayout = styled.div`
     align-items: center;
     gap: 60px;
     background-color: #21D1C2;
-`
-export const LinkWrapper = styled(Link)`
-    text-decoration: none;
 `
 export const Title = styled.h1`
     margin: 0;

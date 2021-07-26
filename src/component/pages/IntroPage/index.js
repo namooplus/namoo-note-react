@@ -1,4 +1,5 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
 
 import { 
     BaseLayout, FrameLayout, 
@@ -12,6 +13,11 @@ import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 
 function IntroPage(props)
 {
+    // Click event
+    const pushLink = (route) => props.history.push(route);
+    const openGithub = () => window.open('https://github.com/namooplus');
+    const openInstagram = () => window.open('https://www.instagram.com/min.i.stop/');
+
     return (
         <BaseLayout>
             {/* 첫번째 프레임 */}
@@ -21,8 +27,8 @@ function IntroPage(props)
             {/* 두번째 프레임 */}
             <FrameLayout align="flex-end">
                 <LinkLayout>
-                    <IconButton icon={IoLogoGithub} onClick={() => window.open('https://github.com/namooplus')}/>
-                    <IconButton icon={IoLogoInstagram} onClick={() => window.open('https://www.instagram.com/min.i.stop/')}/>
+                    <IconButton icon={IoLogoGithub} onClick={openGithub}/>
+                    <IconButton icon={IoLogoInstagram} onClick={openInstagram}/>
                 </LinkLayout>
                 <Introduction>
                     현재 컴퓨터과학과에 재학중이며 코딩에 흥미를 가지고 열심히 공부하고 있습니다 :)<br/>
@@ -32,8 +38,8 @@ function IntroPage(props)
                     정리 및 공유를 위한 블로그도 운영하고 있으니 한 번씩 구경해주세요~
                 </Introduction>
                 <LinkLayout>
-                    <SimpleButton route="/blog">블로그</SimpleButton>
-                    <SimpleButton route="/project">프로젝트</SimpleButton>
+                    <SimpleButton onClick={() => pushLink("/blog")}>블로그</SimpleButton>
+                    <SimpleButton onClick={() => pushLink("/project?category=앱")}>프로젝트</SimpleButton>
                 </LinkLayout>
             </FrameLayout>
             {/* 오버레이 */}
@@ -42,4 +48,4 @@ function IntroPage(props)
     );
 }
 
-export default IntroPage;
+export default withRouter(IntroPage);

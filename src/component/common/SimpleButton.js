@@ -1,13 +1,8 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 function SimpleButton(props)
 {
-    return (
-        props.route 
-            ? (<Link to={props.route}><Button>{props.children}</Button></Link>) 
-            : (<Button onClick={props.onClick}>{props.children}</Button>)
-    );
+    return <Button onClick={props.onClick}>{props.children}</Button>;
 }
 
 export default SimpleButton;
