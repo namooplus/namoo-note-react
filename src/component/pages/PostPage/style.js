@@ -6,6 +6,10 @@ export const BaseLayout = styled.div`
     display: flex;
     height: 100vh;
     flex-flow: row nowrap;
+
+    @media only screen and (max-width: 650px) {
+        flex-flow: column nowrap;
+    }
 `
 
 // 헤더
@@ -15,11 +19,26 @@ export const HeaderLayout = styled.div`
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     gap: 60px;
     background-color: #21D1C2;
+
+    @media only screen and (max-width: 650px) {
+        width: unset;
+        height: 120px;
+        justify-content: flex-end;
+        gap: unset;
+        padding: 20px 30px 20px 30px;
+    }
 `
 export const LinkWrapper = styled(Link)`
     text-decoration: none;
+
+    @media only screen and (max-width: 650px) {
+        position: absolute;
+        top: 20px;
+        left: 30px;
+    }
 `
 export const Title = styled.h1`
     margin: 0;
@@ -32,12 +51,22 @@ export const Title = styled.h1`
     &:hover {
         opacity: 0.5;
     }
+
+    @media only screen and (max-width: 650px) {
+        font-size: 1.6rem;
+    }
 `
 export const CategoryLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
+    justify-content: center;
     align-items: center;
+    box-sizing: border-box;
     gap: 20px;
+
+    @media only screen and (max-width: 650px) {
+        flex-flow: row nowrap;
+    }
 `
 export const Category = styled.button`
     padding: 0;
@@ -52,6 +81,10 @@ export const Category = styled.button`
     &:hover {
         opacity: 1;
     }
+
+    @media only screen and (max-width: 650px) {
+        font-size: 1.4rem;
+    }
 `
 
 // 내용
@@ -65,6 +98,12 @@ export const ContentLayout = styled.div`
     box-sizing: border-box;
     gap: 15px;
     overflow-y: scroll;
+
+    @media only screen and (max-width: 650px) {
+        flex-flow: column nowrap;
+        justify-content: flex-start;
+        padding: 30px;
+    }
 `
 
 // 애니메이션

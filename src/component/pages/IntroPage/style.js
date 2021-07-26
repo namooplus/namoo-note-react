@@ -6,6 +6,10 @@ export const BaseLayout = styled.div`
     display: flex;
     flex-flow: row nowrap;
     height: 100vh;
+
+    @media only screen and (max-width: 700px) {
+        flex-flow: column nowrap;
+    }
 `
 export const FrameLayout = styled.div`
     display: flex;
@@ -17,6 +21,11 @@ export const FrameLayout = styled.div`
     box-sizing: border-box;
     gap: 15px;
     background-color: ${props => props.backgroundColor || "transprent"};
+
+    @media only screen and (max-width: 700px) {
+        width: unset;
+        height: 50%;
+    }
 `
 
 // 첫번째 프레임
@@ -26,6 +35,10 @@ export const Greeting = styled.h1`
     font-weight: 600;
     letter-spacing: 1rem;
     color: white;
+
+    @media only screen and (max-width: 700px) {
+        font-size: 3rem;
+    }
 `
 
 // 두번째 프레임
@@ -35,6 +48,10 @@ export const Introduction = styled.p`
     line-height: 1.6rem;
     text-align: end;
     color: black;
+
+    @media only screen and (max-width: 700px) {
+        font-size: 0.9rem;
+    }
 `
 export const LinkLayout = styled.div`
     display: flex;

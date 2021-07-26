@@ -37,9 +37,13 @@ const CardLayout = styled.div`
     &:active {
         opacity: 0.5;
     }
+
+    @media only screen and (max-width: 650px) {
+        width: 100%;
+    }
 `
 const Thumbnail = styled.img`
-    height: 200px;
+    aspect-ratio: 1/1;
     object-fit: cover;
 `
 const DescriptionLayout = styled.div`

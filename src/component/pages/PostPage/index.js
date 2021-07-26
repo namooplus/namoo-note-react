@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import PostList from "../../../data/post/list.json";
 
 import { 
@@ -11,6 +12,8 @@ import PostCard from "../../common/PostCard";
 
 function PostPage(props)
 {
+    const isMobile = useMediaQuery({ query: '(max-width: 700px)' });
+
     const [selectedCategory, setSelectedCategory] = useState('');
     const [filteredPosts, setFilteredPosts] = useState([]);
 
@@ -33,7 +36,7 @@ function PostPage(props)
     return (
         <BaseLayout>
             <HeaderLayout>
-                <LinkWrapper to="/"><Title>나무의<br/>노트</Title></LinkWrapper>
+                <LinkWrapper to="/"><Title>나무의{isMobile || <br/>}노트</Title></LinkWrapper>
                 <CategoryLayout>
                     <Category
                         selected={ selectedCategory === '' ? true : false }

@@ -4,6 +4,10 @@ export const BaseLayout = styled.div`
     display: flex;
     height: 100vh;
     flex-flow: row nowrap;
+
+    @media only screen and (max-width: 700px) {
+        flex-flow: column nowrap;
+    } 
 `
 
 // 헤더
@@ -17,6 +21,13 @@ export const HeaderLayout = styled.div`
     box-sizing: border-box;
     gap: 20px;
     background-color: #21D1C2;
+
+    @media only screen and (max-width: 700px) {
+        flex-flow: row nowrap;
+        width: unset;
+        height: 120px;
+        padding: 30px;
+    }
 `
 
 // 내용
