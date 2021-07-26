@@ -93,7 +93,7 @@ function PostPage(props)
                 <Title>{postInfo?.title}</Title>
                 <Description>{postInfo?.date}</Description>
                 <TagLayout>
-                    <Tag>{postInfo?.category}</Tag>
+                    <Tag onClick={() => pushLink(`/${postType}?category=${postInfo?.category}`)}>{postInfo?.category}</Tag>
                     {">"}
                     {postInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
                 </TagLayout>
