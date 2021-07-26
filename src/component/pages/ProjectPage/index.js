@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ProjectList from "../../../data/project/list.json";
+import PostList from "../../../post/project/list.json";
 
 import { 
     BaseLayout, 
@@ -12,15 +12,15 @@ import PostCard from "../../common/PostCard";
 function ProjectPage(props)
 {
     const [selectedCategory, setSelectedCategory] = useState('');
-    const [filteredProjects, setFilteredProjects] = useState([]);
+    const [filteredPosts, setFilteredPosts] = useState([]);
 
     const selectCategory = (category) => {
         // 카테고리 변경
         setSelectedCategory(category);
 
         // 프로젝트 리스트 업데이트
-        const filteredList = ProjectList.filter(project => project.category === category);
-        setFilteredProjects(filteredList);
+        const filteredList = PostList.filter(post => post.category === category);
+        setFilteredPosts(filteredList);
     };
 
     useEffect(() => {
@@ -44,14 +44,14 @@ function ProjectPage(props)
                 </CategoryLayout>
             </HeaderLayout>
             <ContentLayout>
-                {filteredProjects.map((project, index) => 
+                {filteredPosts.map((post, index) => 
                 <PostCard 
                     key={index}
-                    title={project.title}
-                    thumbnail={require(`../../../data/project/${project.id}/thumbnail.png`).default}
-                    date={project.date}
-                    tag={project.tag}
-                    link={`/project/${project.id}`}/>)}
+                    title={post.title}
+                    thumbnail={require(`../../../post/project/${post.id}/thumbnail.png`).default}
+                    date={post.date}
+                    tag={post.tag}
+                    link={`/post/${post.id}`}/>)}
             </ContentLayout>
             <OverlayLayout/>
         </BaseLayout>

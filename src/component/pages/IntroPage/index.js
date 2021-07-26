@@ -32,8 +32,8 @@ function IntroPage(props)
                     정리 및 공유를 위한 블로그도 운영하고 있으니 한 번씩 구경해주세요~
                 </Introduction>
                 <LinkLayout>
+                    <SimpleButton route="/blog">블로그</SimpleButton>
                     <SimpleButton route="/project">프로젝트</SimpleButton>
-                    <SimpleButton route="/post">블로그</SimpleButton>
                 </LinkLayout>
             </FrameLayout>
             {/* 오버레이 */}
