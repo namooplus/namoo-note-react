@@ -1,12 +1,14 @@
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 export const BaseLayout = styled.div`
     flex: 1 0 0;
     display: flex;
     flex-flow: column nowrap;
+    align-items: center;
     padding: 50px;
     box-sizing: border-box;
     gap: 30px;
+    overflow-x: hidden;
     overflow-y: scroll;
 `
 
@@ -33,6 +35,7 @@ export const Category = styled.button`
 `
 export const ContentLayout = styled.div`
     display: flex;
+    width: calc(100vw - 350px);
     flex: 1 0 0;
     flex-flow: row wrap;
     justify-content: center;
