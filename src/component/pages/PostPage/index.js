@@ -4,13 +4,11 @@ import { useParams } from "react-router";
 
 import { 
     BaseLayout,
-    HeaderLayout,
-    ContentLayout, Title, Description, TagLayout, Tag, Divider, Post,
+    ContentLayout, Title, Date, TagLayout, Tag, Divider, Post,
     MenuLayout
 } from "./style";
-import IconButton from "../../common/IconButton";
 import FloatingButton from "../../common/FloatingButton";
-import { IoChevronBackOutline, IoMenu, IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
+import { IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
@@ -30,6 +28,9 @@ function PostPage(props)
 
     // Initialize page
     useEffect(() => {
+        // Header sizing
+        props.setHeaderCollapsed(true);
+
         // Get post info
         setPostInfo(postList.find(post => post.id === postId));
 
@@ -40,7 +41,7 @@ function PostPage(props)
             fetch(md).then(res => res.text()).then(content => setPostContent(content));
         }
         catch(e) { setPostContent('e'); }
-    }, [postId, postType, postList]);
+    }, [props, postId, postType, postList]);
 
     // MD rendering option
     const renderOption = {
@@ -77,23 +78,18 @@ function PostPage(props)
 
     // Click event
     const pushLink = (route) => props.history.push(route);
-    const goBack = () => props.history.goBack();
     const scrollTop = () => document.getElementById("content").scrollTo({ top: 0, behavior: 'smooth'});
 
     return (
         postContent !== 'e' ? (
         <BaseLayout>
-            {/* 헤더 */}
-            <HeaderLayout>
-                <IconButton icon={IoChevronBackOutline} color="white" size="1.7rem" onClick={goBack}/>
-                <IconButton icon={IoMenu} color="white" size="1.7rem" onClick={() => pushLink("/")}/>
-            </HeaderLayout>
-            {/* 내용 */}
             <ContentLayout id="content">
                 <Title>{postInfo?.title}</Title>
-                <Description>{postInfo?.date}</Description>
+                <Date>{postInfo?.date}</Date>
                 <TagLayout>
-                    <Tag onClick={() => pushLink(`/${postType}?category=${postInfo?.category}`)}>{postInfo?.category}</Tag>
+                    <Tag style={{cursor: "pointer"}} onClick={() => pushLink(`/${postType}?category=${postInfo?.category}`)}>
+                        {postInfo?.category}
+                    </Tag>
                     {">"}
                     {postInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
                 </TagLayout>
@@ -106,10 +102,9 @@ function PostPage(props)
                         children={postContent}/>
                 </Post>
             </ContentLayout>
-            {/* 플로팅 메뉴 */}
             <MenuLayout>
                 <FloatingButton icon={IoChatboxOutline}/>
-                <FloatingButton onClick={scrollTop} icon={IoArrowUpOutline}/>
+                <FloatingButton icon={IoArrowUpOutline} onClick={scrollTop} />
             </MenuLayout>
         </BaseLayout>) : <Redirect to="/error"/>
     );
