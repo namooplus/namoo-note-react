@@ -23,7 +23,9 @@ function App(props)
       <Container>
         {/* 헤더 */}
         <Header collapse={isHeaderCollapsed}>
-          <Greeting collapse={isHeaderCollapsed}>안녕하세요!<br/>저는<br/>나무입니다.</Greeting>
+          <Greeting collapse={isHeaderCollapsed}>안녕하세요!<br/>저는<br/>ㅤㅤ입니다.</Greeting>
+          <Title1 collapse={isHeaderCollapsed}>나무</Title1>
+          <Title2 collapse={isHeaderCollapsed}>노트</Title2>
           <MenuLayout collapse={isHeaderCollapsed}>
             <Link to="/"><IconButton icon={IoChevronBackOutline} size="2rem" color="white"/></Link>
           </MenuLayout>
@@ -70,9 +72,39 @@ const Greeting = styled.h1`
   font-size: 4rem;
   font-weight: 600;
   letter-spacing: 1rem;
+  line-height: 5rem;
   color: white;
   white-space: nowrap;
-  opacity: ${props => props.collapse ? 0.2 : 1};
+  opacity: ${props => props.collapse ? 0 : 1};
+  transition: opacity 500ms;
+  pointer-events: none;
+`
+const Title1 = styled.h1`
+  position: absolute;
+  margin: 0;
+  top: ${props => props.collapse ? 'calc(50% - 3rem)' : 'calc(50px + 10rem)'};
+  left: ${props => props.collapse ? 'calc((250px - 5rem) / 2)' : '50px'};
+  font-size: ${props => props.collapse ? '2rem' : '4rem'};
+  font-weight: ${props => props.collapse ? '400' : '600'};
+  letter-spacing: 1rem;
+  line-height: ${props => props.collapse ? '3rem' : '5rem'};
+  color: white;
+  white-space: nowrap;
+  transition: all 500ms;
+  pointer-events: none;
+`
+const Title2 = styled.h1`
+  position: absolute;
+  margin: 0;
+  top: 50%;
+  left: calc((250px - 5rem) / 2);
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1rem;
+  line-height: 3rem;
+  color: white;
+  white-space: nowrap;
+  opacity: ${props => props.collapse ? 1 : 0};
   transition: opacity 500ms;
   pointer-events: none;
 `
@@ -110,6 +142,6 @@ const Pencil = styled.img`
     aspect-ratio: 1/20;
     filter: drop-shadow(0 0 20px black);
     opacity: ${props => props.collapse ? 0 : 1};
-    transition: opacity 500ms, left 500ms;
+    transition: opacity 500ms, left ease 500ms;
     animation: ${pencilAnimation} 1300ms 0s 1 ease forwards;
 `
