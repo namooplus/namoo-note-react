@@ -1,6 +1,6 @@
 {
   "name": "namoo-note",
-  "version": "0.0.1 pre",
+  "version": "beta 20210728",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
