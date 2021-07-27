@@ -15,7 +15,6 @@ export const CategoryLayout = styled.div`
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
-    box-sizing: border-box;
     gap: 20px;
 `
 export const Category = styled.button`
