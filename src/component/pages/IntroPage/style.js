@@ -9,6 +9,10 @@ export const BaseLayout = styled.div`
     padding: 50px;
     box-sizing: border-box;
     gap: 20px;
+
+    @media only screen and (max-width: 925px) {
+        padding: 30px;
+    }
 `
 
 export const Introduction = styled.p`
@@ -18,7 +22,7 @@ export const Introduction = styled.p`
     text-align: end;
     color: black;
 
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 925px) {
         font-size: 0.9rem;
     }
 `

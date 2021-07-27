@@ -17,18 +17,30 @@ export const ContentLayout = styled.div`
     gap: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
+
+    @media only screen and (max-width: 925px) {
+        padding: 30px;
+    }
 `
 export const Title = styled.h1`
     margin: 0;
     color: black;
     font-size: 2.5rem;
     text-align: center;
+
+    @media only screen and (max-width: 925px) {
+        font-size: 2rem;
+    }
 `
 export const Date = styled.h2`
     margin: 0;
     color: gray;
     font-size: 1.3rem;
     font-weight: 300;
+
+    @media only screen and (max-width: 925px) {
+        font-size: 1.1rem;
+    }
 `
 export const TagLayout = styled.div`
     display: flex;
@@ -47,12 +59,15 @@ export const Divider = styled.hr`
     margin-top: 35px;
     border: 1px solid lightgray;
     transform: scaleY(0.5);
+
+    @media only screen and (max-width: 925px) {
+        margin-top: 20px;
+    }
 `
 export const Post = styled.div`
     width: 700px;
-    margin: 0 30px;
 
-    @media only screen and (max-width: 1100px) {
+    @media only screen and (max-width: 1050px) {
         width: 100%;
     }
 `
@@ -66,4 +81,8 @@ export const MenuLayout = styled.div`
     flex-flow: row nowrap;
     margin: 50px;
     gap: 20px;
+
+    @media only screen and (max-width: 925px) {
+        margin: 30px;
+    }
 `

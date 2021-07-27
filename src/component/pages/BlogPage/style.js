@@ -5,9 +5,6 @@ export const BaseLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 50px;
-    box-sizing: border-box;
-    gap: 30px;
     overflow-x: hidden;
     overflow-y: scroll;
 `
@@ -17,7 +14,12 @@ export const CategoryLayout = styled.div`
     flex-flow: row nowrap;
     justify-content: center;
     align-items: center;
+    margin-top: 50px;
     gap: 20px;
+
+    @media only screen and (max-width: 925px) {
+        margin-top: 30px;
+    }
 `
 export const Category = styled.button`
     padding: 0;
@@ -33,21 +35,22 @@ export const Category = styled.button`
         opacity: 1;
     }
 
-    @media only screen and (max-width: 650px) {
+    @media only screen and (max-width: 925px) {
         font-size: 1.4rem;
     }
 `
 export const ContentLayout = styled.div`
     display: flex;
-    width: calc(100vw - 350px);
+    width: calc(100vw - 250px);
     flex: 1 0 0;
     flex-flow: row wrap;
     justify-content: center;
     align-content: flex-start;
+    padding: 30px;
+    box-sizing: border-box;
     gap: 15px;
 
-    @media only screen and (max-width: 650px) {
-        flex-flow: column nowrap;
-        justify-content: flex-start;
+    @media only screen and (max-width: 925px) {
+        width: 100%;
     }
 `

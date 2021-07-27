@@ -52,6 +52,10 @@ const Container = styled.div`
   display: flex;
   flex-flow: row nowrap;
   height: 100vh;
+
+  @media only screen and (max-width: 925px) {
+    flex-flow: column nowrap;
+  }
 `
 const Header = styled.div`
   position: relative;
@@ -64,7 +68,13 @@ const Header = styled.div`
   box-sizing: border-box;
   background-color: #21D1C2;
   overflow: hidden;
-  transition: width ease 500ms;
+  transition: width ease 500ms, height ease 500ms;
+
+  @media only screen and (max-width: 925px) {
+    width: unset;
+    height: ${props => props.collapse ? '120px' : '50%'};
+    padding: 30px;
+  }
 `
 const Greeting = styled.h1`
   position: absolute;
@@ -76,8 +86,14 @@ const Greeting = styled.h1`
   color: white;
   white-space: nowrap;
   opacity: ${props => props.collapse ? 0 : 1};
-  transition: opacity 500ms;
+  transition: opacity ease 500ms;
   pointer-events: none;
+
+  @media only screen and (max-width: 925px) {
+    font-size: 3rem;
+    letter-spacing: 0.6rem;
+    line-height: 4rem;
+  }
 `
 const Title1 = styled.h1`
   position: absolute;
@@ -90,8 +106,16 @@ const Title1 = styled.h1`
   line-height: ${props => props.collapse ? '3rem' : '5rem'};
   color: white;
   white-space: nowrap;
-  transition: all 500ms;
+  transition: all ease 500ms;
   pointer-events: none;
+
+  @media only screen and (max-width: 925px) {
+    top: ${props => props.collapse ? 'calc(50% - 2rem)' : 'calc(30px + 8rem)'};
+    left: ${props => props.collapse ? 'calc((100% - 3.6rem) / 2)' : '30px'};
+    font-size: ${props => props.collapse ? '1.5rem' : '3rem'};
+    letter-spacing: 0.6rem;
+    line-height: ${props => props.collapse ? '2rem' : '4rem'};
+  }
 `
 const Title2 = styled.h1`
   position: absolute;
@@ -105,21 +129,28 @@ const Title2 = styled.h1`
   color: white;
   white-space: nowrap;
   opacity: ${props => props.collapse ? 1 : 0};
-  transition: opacity 500ms;
+  transition: opacity ease 500ms;
   pointer-events: none;
+
+  @media only screen and (max-width: 925px) {
+    left: calc((100% - 3.6rem) / 2);
+    font-size: 1.5rem;
+    letter-spacing: 0.6rem;
+    line-height: 2rem;
+  }
 `
 const MenuLayout = styled.div`
   display: flex;
   flex-flow: column nowrap;
   gap: 20px;
   opacity: ${props => props.collapse ? 1 : 0};
-  transition: opacity 500ms;
+  transition: opacity ease 500ms;
 `
 
 // 오버레이
 const pencilAnimation = keyframes`
     0% {
-        top: 70%;
+        top: 100%;
         transform: translate(-50%, -50%) rotate(0deg);
     }
     50% {
@@ -135,6 +166,24 @@ const pencilAnimation = keyframes`
         transform: translate(-50%, -50%) rotate(30deg);
     }
 `
+const pencilAnimationMobile = keyframes`
+    0% {
+        left: 0%;
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    50% {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    60% {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    100% {
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(60deg);
+    }
+`
 const Pencil = styled.img`
     position: fixed;
     left: ${props => props.collapse ? '250px' : '50%'};
@@ -142,6 +191,13 @@ const Pencil = styled.img`
     aspect-ratio: 1/20;
     filter: drop-shadow(0 0 20px black);
     opacity: ${props => props.collapse ? 0 : 1};
-    transition: opacity 500ms, left ease 500ms;
+    transition: opacity 500ms, left ease 500ms, top ease 500ms;
     animation: ${pencilAnimation} 1300ms 0s 1 ease forwards;
+
+    @media only screen and (max-width: 925px) {
+      left: unset;
+      top: ${props => props.collapse ? '120px' : '50%'};
+      height: 350px;
+      animation: ${pencilAnimationMobile} 1300ms 0s 1 ease forwards;
+    }
 `

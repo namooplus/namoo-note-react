@@ -31,7 +31,7 @@ const CardLayout = styled.div`
         opacity: 0.5;
     }
 
-    @media only screen and (max-width: 650px) {
+    @media only screen and (max-width: 675px) {
         width: 100%;
     }
 `
