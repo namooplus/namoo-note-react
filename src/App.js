@@ -12,7 +12,7 @@ import IconButton from "./component/common/IconButton";
 import PencilIcon from "./image/pencil.PNG";
 import { IoChevronBackOutline } from "react-icons/io5";
 
-function App(props) 
+function App() 
 {
   // Header sizing
   const [isHeaderCollapsed, setHeaderCollapsed] = useState(false);
