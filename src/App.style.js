@@ -139,17 +139,19 @@ const pencilAnimationMobile = keyframes`
 export const Pencil = styled.img`
     position: fixed;
     left: ${props => props.collapse ? '250px' : '50%'};
-    height: 450px;
-    aspect-ratio: 1/20;
+    height: 460px;
+    width: 23px;
     filter: drop-shadow(0 0 20px black);
     opacity: ${props => props.collapse ? 0 : 1};
     transition: opacity 500ms, left ease 500ms, top ease 500ms;
     animation: ${pencilAnimation} 1300ms 0s 1 ease forwards;
+    pointer-events: none;
 
     @media only screen and (max-width: 925px) {
         left: unset;
         top: ${props => props.collapse ? '120px' : '50%'};
-        height: 350px;
+        height: 340px;
+        width: 17px;
         animation: ${pencilAnimationMobile} 1300ms 0s 1 ease forwards;
     }
 `

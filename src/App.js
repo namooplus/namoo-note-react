@@ -14,7 +14,7 @@ import {
 } from "./App.style";
 import IconButton from "./component/common/IconButton";
 import PencilIcon from "./image/pencil.PNG";
-import { IoChevronBackOutline } from "react-icons/io5";
+import { BsChevronLeft } from "react-icons/bs";
 
 function App() 
 {
@@ -31,7 +31,7 @@ function App()
           <Title1 collapse={isHeaderCollapsed}>나무</Title1>
           <Title2 collapse={isHeaderCollapsed}>노트</Title2>
           <MenuLayout collapse={isHeaderCollapsed}>
-            <Link to="/"><IconButton icon={IoChevronBackOutline} size="2rem" color="white"/></Link>
+            <Link to="/"><IconButton icon={BsChevronLeft} size="1.7rem" color="white"/></Link>
           </MenuLayout>
         </Header>
         {/* 내용 */}
