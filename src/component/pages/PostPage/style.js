@@ -12,14 +12,14 @@ export const ContentLayout = styled.div`
     flex: 1 0 0;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 50px;
+    padding: 50px 50px 100px 50px;
     box-sizing: border-box;
     gap: 10px;
     overflow-x: hidden;
     overflow-y: scroll;
 
     @media only screen and (max-width: 925px) {
-        padding: 30px;
+        padding: 30px 30px 80px 30px;
     }
 `
 export const Title = styled.h1`
