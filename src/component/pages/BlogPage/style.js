@@ -47,11 +47,12 @@ export const ContentLayout = styled.div`
     flex-flow: row wrap;
     justify-content: center;
     align-content: flex-start;
-    padding: 30px;
+    padding: 30px 30px 50px 30px;
     box-sizing: border-box;
     gap: 15px;
 
     @media only screen and (max-width: 925px) {
         width: 100%;
+        padding: 30px;
     }
 `
