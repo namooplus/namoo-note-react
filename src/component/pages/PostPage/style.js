@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { DiscussionEmbed } from 'disqus-react';
 
 export const BaseLayout = styled.div`
     width: 100%;
@@ -97,11 +98,17 @@ export const CommentLayout = styled.div`
     display: flex;
     flex-flow: column nowrap;
     height: ${props => props.open ? "300px" : "0"};
-    justify-content: flex-start;
-    align-items: center;
     background-color: white;
     box-shadow: 0 0 20px lightgray;
+    box-sizing: border-box;
     z-index: 1;
-    overflow: hidden;
+    overflow: scroll;
     transition: height ease 300ms;
+`
+export const Comment = styled(DiscussionEmbed)`
+    margin: 30px 50px;
+
+    @media only screen and (max-width: 925px) {
+        margin: 30px;
+    }
 `
