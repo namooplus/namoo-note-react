@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-// BlogPage
+// ListPage
 export function useCategoryList(postList) {
     const [categoryList, setCategoryList] = useState([]);
 
@@ -40,4 +40,46 @@ export function useTagList(filteredPostList) {
     }, [filteredPostList]);
 
     return tagList;
+}
+
+// PostPage
+export function usePost(postId, postType, postList) {
+    const [postInfo, setPostInfo] = useState();
+    const [postContent, setPostContent] = useState('');
+
+    useEffect(() => setPostInfo(postList.find(post => post.id === postId)), [postId, postList]);
+    useEffect(() => {
+        try {
+            const md = require(`../post/${postType}/${postId}/content.md`).default;
+            fetch(md).then(res => res.text()).then(content => setPostContent(content));
+        }
+        catch(e) { 
+            setPostContent('e'); 
+        }
+    }, [postId, postType]);
+
+    return { postInfo, postContent };
+}
+export function useScrollDown() {
+    const [scrollDown, setScrollDown] = useState(0);
+    let isRecordAllowed = true;
+    let prevScrollY = window.scrollY;
+
+    const allowRecord = () => {
+        prevScrollY = window.scrollY;
+        isRecordAllowed = true;
+    };
+    const handleScroll = () => {
+        if (!isRecordAllowed) return;
+        isRecordAllowed = false;
+        setTimeout(allowRecord, 1000);
+        setScrollDown(prevScrollY < window.scrollY);
+    }
+    
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    return scrollDown;
 }

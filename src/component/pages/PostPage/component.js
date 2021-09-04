@@ -7,7 +7,7 @@ import mdRenderer from "../../../util/mdRenderer";
 
 import {
     BaseContainer,
-    SubHeaderContainer, Title, Date, TagLayout, Tag,
+    SubHeaderContainer, Title, InfoContainer, Date, TagLayout, Tag,
     PostContainer,
     MenuContainer,
     CommentContainer
@@ -22,18 +22,21 @@ export const Container = {
             : <Redirect to="/error"/>
         }</>)
     },
-    SubHeader: function(props) {
-        return <SubHeaderContainer>{props.children}</SubHeaderContainer>
-    },
 };
 
 export const Group = {
-    Tag: function(props) {
+    SubHeader: function(props) {
         return (
-            <TagLayout>
-                <Tag>{props.postInfo?.category}</Tag>&gt;
-                {props.postInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
-            </TagLayout>
+            <SubHeaderContainer>
+                <Title collapse={props.collapse}>{props.postInfo?.title}</Title>
+                <InfoContainer collapse={props.collapse}>
+                    <Date>{props.postInfo?.date}</Date>
+                    <TagLayout>
+                    <Tag>{props.postInfo?.category}</Tag>&gt;
+                        {props.postInfo?.tag.map((tag, index) => <Tag key={index}>{tag}</Tag>)}
+                    </TagLayout>
+                </InfoContainer>
+            </SubHeaderContainer>
         )
     },
     Post: function(props) {
@@ -65,10 +68,5 @@ export const Group = {
 };
 
 export const Element = {
-    Title: function(props) {
-        return <Title>{props.children}</Title>
-    },
-    Date: function(props) {
-        return <Date>{props.children}</Date>
-    },
+
 };

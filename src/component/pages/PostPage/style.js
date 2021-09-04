@@ -15,42 +15,45 @@ export const SubHeaderContainer = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     padding: 110px 0 30px 0;
-    gap: 10px;
     z-index: 30;
+    overflow-y: hidden;
     background-color: #EEEEEEAA;
     backdrop-filter: blur(10px);
 `
 export const Title = styled.h1`
     margin: 0;
     text-align: center;
-    font-size: 2.5rem;
+    font-size: ${props => props.collapse ? "1rem" : "2rem"};
     color: black;
-    
-    @media only screen and (max-width: 768px) {
-        font-size: 2rem;
-    }
+    transition: font-size ease .5s;
+`
+export const InfoContainer = styled.div`
+    display: flex;
+    height: ${props => props.collapse ? "0" : "calc(1.7rem + 25px)"};
+    flex-flow: column nowrap;
+    align-items: center;
+    overflow: hidden;
+    transition: height ease .5s;
 `
 export const Date = styled.h2`
-    margin: 0;
-    font-size: 1.3rem;
+    height: 1rem;
+    margin: 3px 0 0 0;
+    font-size: 1rem;
     font-weight: 300;
     color: gray;
-
-    @media only screen and (max-width: 768px) {
-        font-size: 1.1rem;
-    }
 `
 export const TagLayout = styled.div`
     display: flex;
     flex-flow: row nowrap;
     gap: 7px;
-    margin-top: 5px;
+    margin-top: 12px;
 `
 export const Tag = styled.span`
     padding: 5px 7px;
     background: #21D1C2;
-    color: white;
+    line-height: 0.7rem;
     font-size: 0.7rem;
+    color: white;
 `
 
 export const PostContainer = styled.div`
