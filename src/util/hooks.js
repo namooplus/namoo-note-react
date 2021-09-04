@@ -72,7 +72,7 @@ export function useScrollDown() {
     const handleScroll = () => {
         if (!isRecordAllowed) return;
         isRecordAllowed = false;
-        setTimeout(allowRecord, 1000);
+        setTimeout(allowRecord, 600);
         setScrollDown(prevScrollY < window.scrollY);
     }
     
