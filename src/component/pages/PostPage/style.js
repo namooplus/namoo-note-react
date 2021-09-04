@@ -14,7 +14,8 @@ export const SubHeaderContainer = styled.div`
     width: 100%;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 110px 0 30px 0;
+    padding: 110px 30px 30px 30px;
+    box-sizing: border-box;
     z-index: 30;
     overflow-y: hidden;
     background-color: #EEEEEEAA;
