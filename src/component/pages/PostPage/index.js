@@ -7,7 +7,7 @@ import {
     ContentLayout, PostLayout, Title, Date, TagLayout, Tag, Divider, Post, MenuLayout,
     CommentLayout, Comment
 } from "./style";
-import FloatingButton from "../../common/FloatingButton";
+import FloatingButton from "../../common/button/FloatingButton";
 import { IoChatboxOutline, IoArrowUpOutline } from "react-icons/io5";
 
 import ReactMarkdown from "react-markdown";

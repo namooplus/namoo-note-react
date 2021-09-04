@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { withRouter } from "react-router-dom";
 import { useCategoryList, useFilteredPostList, useTagList } from "../../../util/hooks";
 
-import { Container, Group, Element } from "./component";
+import { Container, Group } from "./component";
 
 function ListPage(props)
 {

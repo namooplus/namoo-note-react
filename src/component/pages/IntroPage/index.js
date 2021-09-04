@@ -1,7 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import { Container, Group, Element } from "./component";
+import { Container, Group } from "./component";
 
 function IntroPage(props)
 {

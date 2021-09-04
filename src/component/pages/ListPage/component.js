@@ -3,7 +3,7 @@ import {
     SubHeaderContainer, CategoryContainer, Category, TagContainer, Tag,
     PostContainer
 } from "./style";
-import PostCard from "../../common/PostCard";
+import PostCard from "../../common/card/PostCard";
 
 export const Container = {
     Base: function(props) {

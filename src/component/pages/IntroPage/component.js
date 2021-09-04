@@ -2,7 +2,7 @@ import {
     BaseContainer, 
     SectionContainer, Title, Introduction, ButtonContainer
 } from "./style";
-import SimpleButton from "../../common/SimpleButton";
+import SimpleButton from "../../common/button/SimpleButton";
 // import IconButton from "../../common/IconButton";
 // import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 

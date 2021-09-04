@@ -6,7 +6,7 @@ import ListPage from "./component/pages/ListPage/index";
 import PostPage from "./component/pages/PostPage/index";
 import ErrorPage from "./component/pages/ErrorPage/index";
 
-import { Container, Group, Element } from "./App.component";
+import { Container, Group } from "./App.component";
 
 function App() 
 {
