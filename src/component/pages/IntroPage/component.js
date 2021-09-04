@@ -2,9 +2,8 @@ import {
     BaseContainer, 
     SectionContainer, Title, Introduction, ButtonContainer
 } from "./style";
-import SimpleButton from "../../common/button/SimpleButton";
-// import IconButton from "../../common/IconButton";
-// import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
+import IconButton from "../../common/button/IconButton";
+import { IoLogoGithub, IoLogoInstagram } from "react-icons/io5";
 
 export const Container = {
     Base: function(props) {
@@ -21,8 +20,6 @@ export const Group = {
                     현재 컴퓨터과학과에 재학중이며 코딩에 흥미를 가지고 열심히 공부하고 있습니다.<br/>
                     앱/웹/프로그램 개발 경험이 있으며 특히 UI/UX에 관심이 많습니다!<br/>
                     최근에는 알고리즘 공부로 고통받고 있습니다 ㅜㅜ<br/>
-                    '프로젝트'를 눌러 지금까지 참여한 프로젝트들을 확인할 수 있습니다.<br/>
-                    추가로 블로그도 운영하고 있으니 한 번씩 구경해주세요 :)
                 </Introduction>
             </SectionContainer>
         );
@@ -32,11 +29,8 @@ export const Group = {
             <SectionContainer>
                 <Title>저는 이러한 경험이 있어요!</Title>
                 <Introduction>
-                    현재 컴퓨터과학과에 재학중이며 코딩에 흥미를 가지고 열심히 공부하고 있습니다.<br/>
                     앱/웹/프로그램 개발 경험이 있으며 특히 UI/UX에 관심이 많습니다!<br/>
                     최근에는 알고리즘 공부로 고통받고 있습니다 ㅜㅜ<br/>
-                    '프로젝트'를 눌러 지금까지 참여한 프로젝트들을 확인할 수 있습니다.<br/>
-                    추가로 블로그도 운영하고 있으니 한 번씩 구경해주세요 :)
                 </Introduction>
             </SectionContainer>
         );
@@ -49,12 +43,11 @@ export const Group = {
                     현재 컴퓨터과학과에 재학중이며 코딩에 흥미를 가지고 열심히 공부하고 있습니다.<br/>
                     앱/웹/프로그램 개발 경험이 있으며 특히 UI/UX에 관심이 많습니다!<br/>
                     최근에는 알고리즘 공부로 고통받고 있습니다 ㅜㅜ<br/>
-                    '프로젝트'를 눌러 지금까지 참여한 프로젝트들을 확인할 수 있습니다.<br/>
-                    추가로 블로그도 운영하고 있으니 한 번씩 구경해주세요 :)
+                    상단의 아이콘을 눌러 블로그와 프로젝트를 확인할 수 있습니다.
                 </Introduction>
                 <ButtonContainer>
-                    <SimpleButton>인스타그램</SimpleButton>
-                    <SimpleButton>깃허브</SimpleButton>
+                    <IconButton icon={IoLogoGithub} size="2rem" onClick={props.openGithub}/>
+                    <IconButton icon={IoLogoInstagram} size="2rem" onClick={props.openInstagram}/>
                 </ButtonContainer>
             </SectionContainer>
         );

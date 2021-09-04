@@ -6,7 +6,6 @@ import { Container, Group } from "./component";
 function IntroPage(props)
 {
     // Click event
-    const pushLink = (route) => props.history.push(route);
     const openGithub = () => window.open('https://github.com/namooplus');
     const openInstagram = () => window.open('https://www.instagram.com/min.i.stop/'); 
 
@@ -14,7 +13,7 @@ function IntroPage(props)
         <Container.Base>
             <Group.Overview/>
             <Group.Experience/>
-            <Group.Contact/>
+            <Group.Contact openGithub={openGithub} openInstagram={openInstagram}/>
         </Container.Base>
     );
 }
