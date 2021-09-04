@@ -9,7 +9,7 @@ function ErrorPage(props)
 {
     useEffect(() => {
         // Header sizing
-        props.setHeaderCollapsed(true);
+        // props.setHeaderCollapsed(true);
     }, [props]);
 
     // Click event

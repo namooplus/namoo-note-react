@@ -31,7 +31,7 @@ function PostPage(props)
     // Initialize page
     useEffect(() => {
         // Header sizing
-        props.setHeaderCollapsed(true);
+        // props.setHeaderCollapsed(true);
 
         // Get post info
         setPostInfo(postList.find(post => post.id === postId));

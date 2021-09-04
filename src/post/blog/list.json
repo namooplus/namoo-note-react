@@ -11,7 +11,7 @@
         "title": "테스트 게시물 2",
         "date": "2021-08-02",
         "category": "정보",
-        "tag": ["Test"],
+        "tag": ["Test", "Test2"],
         "recommend": true
     },
     {
@@ -19,7 +19,7 @@
         "title": "테스트 게시물 3",
         "date": "2021-08-02",
         "category": "정보",
-        "tag": ["Test"],
+        "tag": ["Test", "Test3"],
         "recommend": true
     },
     {
@@ -42,7 +42,7 @@
         "title": "테스트 게시물 6",
         "date": "2021-08-02",
         "category": "코딩",
-        "tag": ["Test"],
+        "tag": ["Test", "Test6"],
         "recommend": true
     },
     {
@@ -58,6 +58,6 @@
         "title": "테스트 게시물 8",
         "date": "2021-08-02",
         "category": "나무",
-        "tag": ["Test"]
+        "tag": ["Test", "Test7"]
     }
 ]
