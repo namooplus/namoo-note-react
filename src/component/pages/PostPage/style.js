@@ -27,7 +27,7 @@ export const Title = styled.h1`
     text-align: center;
     font-size: ${props => props.collapse ? "1rem" : "2rem"};
     color: black;
-    transition: font-size ease .5s;
+    transition: font-size ease .3s;
 `
 export const InfoContainer = styled.div`
     display: flex;
@@ -35,7 +35,7 @@ export const InfoContainer = styled.div`
     flex-flow: column nowrap;
     align-items: center;
     overflow: hidden;
-    transition: height ease .5s;
+    transition: height ease .3s;
 `
 export const Date = styled.h2`
     height: 1rem;
