@@ -20,14 +20,25 @@ export const HeaderContainer = styled.div`
     z-index: 50;
 `
 export const HeaderBackground = styled.div`
+    display: flex;
     width: 100%;
     height: 100%;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 30px;
+    box-sizing: border-box;
     background-color: #EEEEEEAA;
     backdrop-filter: blur(7px);
     opacity: ${props => props.collapsed ? 0 : 1};
     pointer-events: ${props => props.collapsed ? "none" : "auto"};
     transition: .5s opacity;
 `
+export const Copyright = styled.span`
+    font-size: 0.8rem;
+    color: gray;
+`
+
 export const NavigationContainer = styled.div`
     position: absolute;
     display: flex;
