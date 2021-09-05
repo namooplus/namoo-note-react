@@ -14,12 +14,13 @@ export const SubHeaderContainer = styled.div`
     width: 100%;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 110px 30px 30px 30px;
+    padding: 90px 30px 20px 30px;
     box-sizing: border-box;
     z-index: 30;
     overflow-y: hidden;
     background-color: #EEEEEEAA;
     backdrop-filter: blur(10px);
+    border-bottom: 1px solid #00000010;
 `
 export const Title = styled.h1`
     margin: 0;
@@ -61,7 +62,7 @@ export const PostContainer = styled.div`
     display: flex;
     width: 768px;
     flex-flow: column nowrap;
-    padding: 0 30px 110px 30px;
+    padding: 30px 30px 110px 30px;
     box-sizing: border-box;
 
     @media only screen and (max-width: 768px) {

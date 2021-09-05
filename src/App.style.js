@@ -30,19 +30,19 @@ export const HeaderBackground = styled.div`
 `
 export const NavigationContainer = styled.div`
     position: absolute;
-    top: ${props => props.collapsed ? "30px" : "calc((100% - (220px + 4.5rem)) / 2)"};
     display: flex;
-    height: ${props => props.collapsed ? "70px" : "calc(220px + 4.5rem)"};
+    height: ${props => props.collapsed ? "60px" : "calc(210px + 4.5rem)"};
     flex-flow: column nowrap;
     align-items: center;
+    margin-top: ${props => props.collapsed ? "15px" : "calc((100vh - (210px + 4.5rem)) / 2)"};
     gap: 50px;
     pointer-events: auto;
     overflow: hidden;
     transition: .5s ease all;
 `
 export const Icon = styled.img`
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     transition: .3s opacity;
 
     &:hover {

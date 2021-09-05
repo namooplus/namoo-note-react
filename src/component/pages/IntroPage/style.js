@@ -5,7 +5,7 @@ export const BaseContainer = styled.div`
     width: 100%;
     flex-flow: column nowrap;
     align-items: center;
-    padding: 130px 30px 60px 30px;
+    padding: 90px 30px 60px 30px;
     box-sizing: border-box;
     gap: 80px;
 `
