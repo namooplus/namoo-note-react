@@ -89,10 +89,18 @@ export const CommentContainer = styled.div`
     height: 100%;
     flex-flow: column nowrap;
     z-index: 35;
+    padding: 90px 30px 110px 30px;
+    box-sizing: border-box;
     overflow: scroll;
     background-color: #EEEEEEAA;
     backdrop-filter: blur(7px);
     opacity: ${props => props.open ? 1 : 0};
     pointer-events: ${props => props.open ? "auto" : "none"};
     transition: opacity .3s;
+`
+export const CommentTitle = styled.h1`
+    margin: 0;
+    text-align: center;
+    font-size: 2rem;
+    color: black;
 `
