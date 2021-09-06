@@ -5,7 +5,7 @@ export function useCategoryList(postList) {
     const [categoryList, setCategoryList] = useState([]);
 
     useEffect(() => {
-        const tempCategoryList = ['추천'];
+        const tempCategoryList = [];
         postList.forEach(post => {
             if (!tempCategoryList.includes(post.category)) 
                 tempCategoryList.push(post.category);
@@ -18,10 +18,7 @@ export function useCategoryList(postList) {
 export function useFilteredPostList(postList, category) {
     const [filteredPostList, setFilteredPostList] = useState([]);
 
-    useEffect(() => {
-        if (category === '추천') setFilteredPostList(postList.filter(post => post.recommend === true));
-        else setFilteredPostList(postList.filter(post => post.category === category));
-    }, [postList, category]);
+    useEffect(() => setFilteredPostList(postList.filter(post => post.category === category)), [postList, category]);
 
     return filteredPostList;
 }
