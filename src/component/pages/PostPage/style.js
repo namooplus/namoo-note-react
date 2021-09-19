@@ -41,6 +41,7 @@ export const InfoContainer = styled.div`
 export const Date = styled.h2`
     height: 1rem;
     margin: 3px 0 0 0;
+    line-height: 1rem;
     font-size: 1rem;
     font-weight: 300;
     color: gray;
@@ -53,6 +54,7 @@ export const TagLayout = styled.div`
 `
 export const Tag = styled.span`
     height: 0.9rem;
+    line-height: 0.9rem;
     font-size: 0.9rem;
     font-weight: 600;
     color: #21D1C2;

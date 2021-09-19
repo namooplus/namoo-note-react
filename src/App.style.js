@@ -59,11 +59,12 @@ export const Icon = styled.img`
 `
 export const Navigation = styled(Link)`
     height: 1.5rem;
-    pointer-events: ${props => props.selected ? "none" : "auto"};
+    line-height: 1.5rem;
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 600;
     color: black;
+    pointer-events: ${props => props.selected ? "none" : "auto"};
     transition: .3s opacity;
 
     &:hover {
