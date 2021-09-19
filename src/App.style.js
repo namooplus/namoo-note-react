@@ -50,6 +50,7 @@ export const NavigationContainer = styled.div`
 export const Icon = styled.img`
     width: 60px;
     height: 60px;
+    cursor: pointer;
     transition: .3s opacity;
 
     &:hover {
@@ -66,7 +67,10 @@ export const Navigation = styled(Link)`
     transition: .3s opacity;
 
     &:hover {
-        opacity: 1;
+        opacity: 0.5;
+    }
+    &:active {
+        opacity: 0.3;
     }
 `
 

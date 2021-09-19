@@ -35,6 +35,7 @@ export const Category = styled.button`
     font-size: 1.4rem;
     font-weight: 700;
     color: black;
+    cursor: pointer;
     opacity: ${props => props.selected ? 1 : 0.2};
     transition: opacity .3s;
 
@@ -59,6 +60,7 @@ export const Tag = styled.button`
     background: none;
     font-size: 0.9rem;
     color: white;
+    cursor: pointer;
     opacity: ${props => props.selected ? 1 : 0.4};
     transition: opacity .3s;
 
