@@ -32,7 +32,7 @@ export const Title = styled.h1`
 `
 export const InfoContainer = styled.div`
     display: flex;
-    height: ${props => props.collapse ? "0" : "calc(1.7rem + 25px)"};
+    height: ${props => props.collapse ? "0" : "calc(1.9rem + 13px)"};
     flex-flow: column nowrap;
     align-items: center;
     overflow: hidden;
@@ -48,15 +48,14 @@ export const Date = styled.h2`
 export const TagLayout = styled.div`
     display: flex;
     flex-flow: row nowrap;
-    gap: 7px;
-    margin-top: 12px;
+    gap: 10px;
+    margin-top: 10px;
 `
 export const Tag = styled.span`
-    padding: 5px 7px;
-    background: #21D1C2;
-    line-height: 0.7rem;
-    font-size: 0.7rem;
-    color: white;
+    height: 0.9rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #21D1C2;
 `
 
 export const PostContainer = styled.div`
