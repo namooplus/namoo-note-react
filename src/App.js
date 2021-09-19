@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Switch, Route, Redirect, useLocation } from "react-router-dom";
+import React from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
 
 import IntroPage from "./component/pages/IntroPage/index";
 import ListPage from "./component/pages/ListPage/index";
@@ -10,13 +10,10 @@ import { Container, Group } from "./App.component";
 
 function App() 
 {
-    const [isHeaderCollapsed, setHeaderCollapsed] = useState(true);
-    const currentLocation = useLocation();
-
     return (
         <Container.Base>
             {/* 헤더 */}
-            <Group.Header collapsed={isHeaderCollapsed} setCollapsed={setHeaderCollapsed} currentPath={currentLocation.pathname}/>
+            <Group.Header/>
             {/* 내용 */}
             <Switch>
                 <Route exact path="/" component={IntroPage}/>
