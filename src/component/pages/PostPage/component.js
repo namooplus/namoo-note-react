@@ -9,7 +9,7 @@ import mdRenderer from "../../../util/mdRenderer";
 import {
     BaseContainer,
     SubHeaderContainer, Title, InfoContainer, Date, TagLayout, Tag,
-    PostContainer,
+    PostContainer, Loading,
     MenuContainer,
     CommentContainer, CommentTitle
 } from "./style";
@@ -40,16 +40,21 @@ export const Group = {
         )
     },
     Post: function(props) {
-        return (<>{props.content !== 'e'
-            ? <PostContainer>
-                    <ReactMarkdown
-                        remarkPlugins={[gfm]}
-                        rehypePlugins={[rehypeRaw]}
-                        components={mdRenderer(props.id, props.type)}
-                        children={props.content}/>
-                </PostContainer>
-            : <Redirect to="/error"/>
-        }</>)
+        if (props.content === '')
+            return <Loading>포스트를 불러오고 있어요</Loading>
+
+        else if (props.content === 'e')
+            return <Redirect to="/error"/>
+
+        return (
+            <PostContainer>
+                <ReactMarkdown
+                    remarkPlugins={[gfm]}
+                    rehypePlugins={[rehypeRaw]}
+                    components={mdRenderer(props.id, props.type)}
+                    children={props.content}/>
+            </PostContainer>
+        );
     },
     Comment: function(props) {
         return (
