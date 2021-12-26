@@ -1,35 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { withRouter } from "react-router-dom";
-import { useCategoryList, useFilteredPostList, useTagList } from "../../../util/hooks";
+import { useParams } from "react-router";
+import { usePostList, useCategoryList } from "../../../util/hooks";
 
 import Meta from "../../../util/Meta";
 import { Container, Group } from "./component";
 
 function ListPage(props)
 {
-    const postList = require(`../../../post/${props.type}/list.json`);
-
-    const categoryList = useCategoryList(postList);
-    const [category, setCategory] = useState();
-    const filteredPostList = useFilteredPostList(postList, category);
-    const tagList = useTagList(filteredPostList);
-    const [tag, setTag] = useState();
-
-    useEffect(() => setCategory(categoryList[0]), [categoryList]);
-    useEffect(() => setTag(tagList[0]), [tagList]);
-    useEffect(() => window.scrollTo({ top: 0, behavior: 'smooth'}), [category, tag]);
+    const type = props.type;
+    const categoryList = useCategoryList(type);
+    const { category } = useParams();
+    const postList = usePostList(type, category);
 
     // 클릭 이벤트
-    const link = (route) => props.history.push(route);
+    const push = (route) => props.history.push(route);
+    const replace = (route) => props.history.replace(route);
 
     return (
         <Container.Base>
-            <Meta title={`나무의 노트 : ${props.type === 'blog' ? '블로그' : '프로젝트'}`}/>
+            <Meta title={`나무의 노트 : ${type === 'blog' ? '블로그' : '프로젝트'}`}/>
             <Container.SubHeader>
-                <Group.Category categoryList={categoryList} category={category} setCategory={setCategory}/>
-                <Group.Tag tagList={tagList} tag={tag} setTag={setTag} category={category}/>
+                <Group.Category type={type} categoryList={categoryList} category={category} replace={replace}/>
             </Container.SubHeader>
-            <Group.Post type={props.type} filteredPostList={filteredPostList} tag={tag} link={link}/>
+            <Group.Post type={type} category={category} postList={postList} push={push}/>
         </Container.Base>
     );
 }

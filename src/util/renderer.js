@@ -1,9 +1,12 @@
+import { useState } from "react";
+import * as api from "./api";
+
 import styled from "styled-components";
 
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/esm/styles/prism";
 
-const mdRenderer = (postId, postType) => {
+const renderer = (type, category, id) => {
     return {
         h1: ({children, ...props}) => <H1 {...props}>{children}</H1>,
         p: ({children, ...props}) => <P {...props}>{children}</P>,
@@ -13,14 +16,7 @@ const mdRenderer = (postId, postType) => {
         ol: ({children, ordered, ...props}) => <Ol ordered={ordered.toString()} {...props}>{children}</Ol>,
         a: ({children, ...props}) => <A {...props}>{children}</A>,
         hr: ({...props}) => <Hr {...props}/>,
-        img: ({src, src2, width, width2, alt, ...props}) => (
-            <ImageContainer>
-                <ImageList>
-                    <Image src={require(`../post/${postType}/${postId}/${src}`).default} width={width} alt={alt} {...props}/>
-                    {src2 && <Image src={require(`../post/${postType}/${postId}/${src2}`).default} width={width2} alt={alt} {...props}/>}
-                </ImageList>
-                <ImageDescription>{alt}</ImageDescription>
-            </ImageContainer>),
+        img: ({...props}) => <ImageViewer type={type} category={category} id={id} {...props}/>,
         code: ({inline, className, children, ...props}) => {
             const match = /language-(\w+)/.exec(className || '');
             return !inline && match 
@@ -30,7 +26,25 @@ const mdRenderer = (postId, postType) => {
     }
 }
 
-export default mdRenderer;
+export default renderer;
+
+function ImageViewer({type, category, id, src, src2, width, width2, alt, ...props}) {
+    const [image1, setImage1] = useState(null);
+    const [image2, setImage2] = useState(null);
+
+    api.getPostImage(type, category, id, src).then(response => setImage1(`data:image/;base64,${response.data.content}`));
+    src2 && api.getPostImage(type, category, id, src2).then(response => setImage2(`data:image/;base64,${response.data.content}`));
+
+    return (
+        <ImageContainer>
+            <ImageList>
+                <Image src={image1} width={width} alt={alt} {...props}/>
+                {image2 && <Image src={image2} width={width2} alt={alt} {...props}/>}
+            </ImageList>
+            <ImageDescription>{alt}</ImageDescription>
+        </ImageContainer>
+    );
+}
 
 const H1 = styled.h1`
     padding: 13px 0;

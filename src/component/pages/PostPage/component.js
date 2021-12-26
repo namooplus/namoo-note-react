@@ -4,7 +4,7 @@ import { useScrollTop } from "../../../util/hooks";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import mdRenderer from "../../../util/mdRenderer";
+import renderer from "../../../util/renderer";
 
 import {
     BaseContainer,
@@ -29,12 +29,10 @@ export const Group = {
 
         return (
             <SubHeaderContainer>
-                <Title collapse={!isScrollTop}>{props.postInfo?.title}</Title>
+                <Title collapse={!isScrollTop}>{props.title}</Title>
                 <InfoContainer collapse={!isScrollTop}>
-                    <Date>{props.postInfo?.date}</Date>
-                    <TagLayout>
-                        {props.postInfo?.tag.map((tag, index) => <Tag key={index}>#{tag}</Tag>)}
-                    </TagLayout>
+                    <Date>{props.date}</Date>
+                    <TagLayout><Tag>{props.category}</Tag></TagLayout>
                 </InfoContainer>
             </SubHeaderContainer>
         )
@@ -51,7 +49,7 @@ export const Group = {
                 <ReactMarkdown
                     remarkPlugins={[gfm]}
                     rehypePlugins={[rehypeRaw]}
-                    components={mdRenderer(props.id, props.type)}
+                    components={renderer(props.type, props.category, props.id)}
                     children={props.content}/>
             </PostContainer>
         );

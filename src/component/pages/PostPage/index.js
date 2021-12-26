@@ -1,24 +1,25 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import { useParams } from "react-router";
-import { usePost } from "../../../util/hooks";
+import { usePostContent } from "../../../util/hooks";
 
 import Meta from "../../../util/Meta";
 import { Container, Group } from "./component";
 
 function PostPage(props)
 {
-    // 포스트 초기화
-    const { postId } = useParams();
-    const postType = postId.match(/^\d/) ? 'blog' : 'project';
-    const postList = require(`../../../post/${postType}/list.json`);
-    const { postInfo, postContent } = usePost(postId, postType, postList);
+    // 포스트 정보
+    const type = props.type;
+    const { category, id } = useParams();
+    const title = id.split('~')[1].replace(/_/g, ' ');
+    const date = id.split('~')[0];
+    const content = usePostContent(type, category, id);
 
     return (
         <Container.Base>
-            <Meta title={postInfo?.title}/>
-            <Group.SubHeader postInfo={postInfo}/>
-            <Group.Post id={postId} type={postType} content={postContent}/>
+            <Meta title={title}/>
+            <Group.SubHeader title={title} date={date} category={category}/>
+            <Group.Post type={type} category={category} id={id} content={content}/>
             <Group.Comment/>
             <Group.Menu/>
         </Container.Base>

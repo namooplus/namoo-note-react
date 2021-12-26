@@ -1,65 +1,50 @@
 import { useEffect, useState } from "react";
+import * as api from "./api";
 
 // 카테고리 목록
-export function useCategoryList(postList) {
+export function useCategoryList(type) {
     const [categoryList, setCategoryList] = useState([]);
 
     useEffect(() => {
-        const tempCategoryList = [];
-        postList.forEach(post => {
-            if (!tempCategoryList.includes(post.category)) 
-                tempCategoryList.push(post.category);
-        });
-        setCategoryList(tempCategoryList);
-    }, [postList]);
+        api.getCategoryList(type)
+        .then(response => response.data)
+        .then(list => setCategoryList(list.map(value => value.name)));
+    }, [type]);
 
     return categoryList;
 }
 
 // 포스트 목록
-export function useFilteredPostList(postList, category) {
-    const [filteredPostList, setFilteredPostList] = useState([]);
-
-    useEffect(() => setFilteredPostList(postList.filter(post => post.category === category)), [postList, category]);
-
-    return filteredPostList;
-}
-
-// 태그 목록
-export function useTagList(filteredPostList) {
-    const [tagList, setTagList] = useState([]);
+export function usePostList(type, category) {
+    const [postList, setPostList] = useState([]);
 
     useEffect(() => {
-        const tempTagList = ['모두'];
-        filteredPostList.forEach(post => {
-            post.tag.forEach(tag => {
-                if (!tempTagList.includes(tag)) 
-                    tempTagList.push(tag);
-            })
-        });
-        setTagList(tempTagList);
-    }, [filteredPostList]);
+        api.getPostList(type, category)
+        .then(response => response.data)
+        .then(list => setPostList(list.map(value => {
+            const id = value.name.split('~');
+            return {
+                id: value.name,
+                title: id[1].replace(/_/g, ' '),
+                date: id[0],
+            }
+        })));
+    }, [type, category]);
 
-    return tagList;
+    return postList;
 }
 
 // 포스트 정보
-export function usePost(postId, postType, postList) {
-    const [postInfo, setPostInfo] = useState();
+export function usePostContent(type, category, id) {
     const [postContent, setPostContent] = useState('');
 
-    useEffect(() => setPostInfo(postList.find(post => post.id === postId)), [postId, postList]);
     useEffect(() => {
-        try {
-            const md = require(`../post/${postType}/${postId}/content.md`).default;
-            fetch(md).then(res => res.text()).then(content => setPostContent(content));
-        }
-        catch(e) { 
-            setPostContent('e'); 
-        }
-    }, [postId, postType]);
+        api.getPostContent(type, category, id)
+        .then(content => setPostContent(content))
+        .catch(error => setPostContent(error));
+    }, [type, category, id]);
 
-    return { postInfo, postContent };
+    return postContent;
 }
 
 // 스크롤

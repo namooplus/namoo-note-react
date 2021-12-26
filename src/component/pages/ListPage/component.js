@@ -1,6 +1,6 @@
 import {
     BaseContainer, 
-    SubHeaderContainer, CategoryContainer, Category, TagContainer, Tag,
+    SubHeaderContainer, CategoryContainer, Category,
     PostContainer
 } from "./style";
 import PostCard from "../../common/card/PostCard";
@@ -18,30 +18,20 @@ export const Group = {
     Category: function(props) {
         return (
             <CategoryContainer>{props.categoryList.map((category, index) => 
-                <Category key={index} onClick={() => props.setCategory(category)} selected={props.category === category}>{category}</Category>)}
+                <Category key={index} onClick={() => props.replace(`/${props.type}/${category}`)} selected={props.category === category}>{category}</Category>)}
             </CategoryContainer>
-        )
-    },
-    Tag: function(props) {
-        return (
-            <TagContainer>{props.tagList.map((tag, index) => 
-                <Tag key={index} onClick={() => props.setTag(tag)} selected={props.tag === tag}>{tag}</Tag>)}
-            </TagContainer>
         )
     },
     Post: function(props) {
         return (
             <PostContainer>
-                {props.filteredPostList.filter(post => {
-                    if (props.tag === '모두') return true;
-                    return post.tag.includes(props.tag);
-                }).map((post, index) => 
+                {props.postList.map((post, index) => 
                 <PostCard 
                     key={index}
                     title={post.title}
                     date={post.date}
-                    tag={post.tag}
-                    onClick={() => props.link(`/post/${post.id}`)}/>)}
+                    tag={[]}
+                    onClick={() => props.push(`/${props.type}/${props.category}/${post.id}`)}/>)}
             </PostContainer>
         )
     },
